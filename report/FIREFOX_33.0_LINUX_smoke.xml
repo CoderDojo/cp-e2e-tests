@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="1"
+            failures="0"
             tests="1">
 
   <testsuite name="smoke"
-    errors="0" failures="1" hostname="" id="" package="smoke" skipped="0"
-    tests="1" time="13.60" timestamp="Mon, 25 May 2015 16:18:58 GMT">
+    errors="0" failures="0" hostname="" id="" package="smoke" skipped="0"
+    tests="1" time="33.41" timestamp="Tue, 26 May 2015 10:36:57 GMT">
   
-    <testcase name="CoderDojo Smoke Test" time="13.60" assertions="6">
+    <testcase name="CoderDojo Smoke Test" time="33.41" assertions="12">
 
     
 
@@ -17,17 +17,19 @@
 
     
 
-      <failure message="Timed out while waiting for element &lt;body&gt; to be visible for 1000 milliseconds.">Timed out while waiting for element &lt;body&gt; to be visible for 1000 milliseconds.: Expected &quot;visible&quot; but got: &quot;not visible&quot;
-    at F.WaitForElement.fail (/home/km/work/CoderDojo/cp-e2e-tests/node_modules/nightwatch/lib/api/commands/_waitForElement.js:194:15)
-    at F.WaitForElementVisible.elementNotVisible (/home/km/work/CoderDojo/cp-e2e-tests/node_modules/nightwatch/lib/api/commands/waitForElementVisible.js:61:15)
-    at Object.&lt;anonymous&gt; (/home/km/work/CoderDojo/cp-e2e-tests/node_modules/nightwatch/lib/api/commands/_waitForElement.js:238:17)
-    at HttpRequest.&lt;anonymous&gt; (/home/km/work/CoderDojo/cp-e2e-tests/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/home/km/work/CoderDojo/cp-e2e-tests/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/home/km/work/CoderDojo/cp-e2e-tests/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:944:16</failure>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
     </testcase>
