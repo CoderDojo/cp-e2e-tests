@@ -5,9 +5,25 @@
 
   <testsuite name="smoke"
     errors="0" failures="0" hostname="" id="" package="smoke" skipped="0"
-    tests="1" time="33.41" timestamp="Tue, 26 May 2015 10:36:57 GMT">
+    tests="1" time="48.66" timestamp="Tue, 26 May 2015 11:47:47 GMT">
   
-    <testcase name="CoderDojo Smoke Test" time="33.41" assertions="12">
+    <testcase name="CoderDojo Smoke Test" time="48.66" assertions="20">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 

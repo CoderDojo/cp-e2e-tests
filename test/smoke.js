@@ -1,6 +1,7 @@
 
 var host = process.env.ENV_IP,
     port = process.env.ENV_PORT,
+    cuid = require('cuid'),
     fs   = require('fs');
 
 console.log('host: ' + host);
@@ -8,10 +9,18 @@ console.log('port: ' + port);
 
 var selectors = JSON.parse(fs.readFileSync(__dirname + '/selectors.json', 'utf8'));
 
-function fill(browser, path, value, desc){
+function fill(browser, selector, value, desc){
   browser
-    .verify.visible(path, desc)
-    .setValue(path, value)
+    .verify.visible(selector, desc)
+    .setValue(selector, value)
+}
+
+function logout(browser, selectors){
+  browser
+    .waitForElementVisible(selectors.logout, 1000)
+    .click(selectors.logout)
+    .waitForElementVisible(selectors.register, 2000)
+    .waitForElementVisible(selectors.login, 1000)
 }
 
 module.exports = {
@@ -20,8 +29,7 @@ module.exports = {
     // init
     browser
       .url(host + ':' + port)
-      .waitForElementVisible(selectors.register, 1000)
-      .waitForElementVisible(selectors.login, 1000)
+      .waitForElementVisible('body', 1000)
 
     // search dojo
     fill(browser, 'input[ng-model="search.dojo"]', 'dublin', 'Dojo search field')
@@ -33,35 +41,37 @@ module.exports = {
       .waitForElementVisible(selectors.div.main, 1000)
       .assert.containsText(selectors.div.main, 'Dublin')
 
+    // register
+    var payload = {
+      name: 'e2etests-' + cuid(),
+      email: 'e2etests-' + cuid() + '@example.com',
+      password: 'Password1'
+    };
 
+    browser
+      .click(selectors.register)
+      .waitForElementVisible('body', 1000)
+    fill(browser, selectors.reg.name, payload.name, 'Register name field');
+    fill(browser, selectors.reg.email, payload.email, 'Register email field');
+    fill(browser, selectors.reg.pass, payload.password, 'Register pass field');
+    fill(browser, selectors.reg.passconfirm, payload.password, 'Register pass confirm field');
+    browser
+      .click('button[type="submit"]')
+      .verify.visible('label[class="control-label has-error validationMessage"]', 'Err msg visible')
+      .click('label[for="termsAndConditionsCheckbox"]') // for some reason only clicking the label checks the checkbox
+      .click('button[type="submit"]');
+
+    logout(browser, selectors)
+
+    // safe option: u: manager@example.com, p: test
     // login
-    browser.click(selectors.login)
-    fill(browser, selectors.log.name, 'manager@example.com', 'Login name field')
-    fill(browser, selectors.log.pass, 'test', 'Login pass field')
+    browser.click(selectors.login);
+    fill(browser, selectors.log.name, payload.email, 'Login name field');
+    fill(browser, selectors.log.pass, payload.password, 'Login pass field');
     browser
-      .click("input[type='submit']")
-      .waitForElementVisible(selectors.logout, 1000)
+      .click("input[type='submit']");
 
-    // logout
-    browser
-      .click(selectors.logout)
-      .waitForElementVisible(selectors.register, 1000)
-      .waitForElementVisible(selectors.login, 1000)
-
-    // TODO: Figure out how to click the termsAndConfitions checkbox
-    // // register
-    // browser
-    // .click(selectors.register)
-    // .waitForElementVisible('body', 1000)
-    // // .verify.visible('checkbox', 'Terms and conditions checkbox')
-    // // .click('input[id="termsAndConditionsCheckbox"]', 'Terms and conditions checkbox')
-    // fill(browser, selectors.reg.name, 'some.name', 'Register name field')
-    // fill(browser, selectors.reg.email, 'some.email@mail.com', 'Register email field')
-    // fill(browser, selectors.reg.pass, 'secret', 'Register pass field')
-    // fill(browser, selectors.reg.passconfirm, 'secret', 'Register pass confirm field')
-    // browser
-    //   .click('button[type="submit"]')
-    //   .verify.visible('label[class="control-label has-error validationMessage"]', 'Err msg visible')
+    logout(browser, selectors);
 
     // end
     browser
