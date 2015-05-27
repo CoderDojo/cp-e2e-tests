@@ -40,3 +40,5 @@ web/.build
 .DS_Store
 *~
 .idea
+
+report

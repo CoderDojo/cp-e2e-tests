@@ -2,7 +2,10 @@
 var host = process.env.ENV_IP,
     port = process.env.ENV_PORT,
     cuid = require('cuid'),
+    util = require('util'),
     fs   = require('fs');
+
+var defaultTimeout =  2000; 
 
 console.log('host: ' + host);
 console.log('port: ' + port);
@@ -17,10 +20,12 @@ function fill(browser, selector, value, desc){
 
 function logout(browser, selectors){
   browser
-    .waitForElementVisible(selectors.logout, 1000)
+    .waitForElementPresent(selectors.logout, defaultTimeout)
+  browser
     .click(selectors.logout)
-    .waitForElementVisible(selectors.register, 2000)
-    .waitForElementVisible(selectors.login, 1000)
+    .waitForElementPresent('body', defaultTimeout)
+    .waitForElementPresent(selectors.register, defaultTimeout)
+    .waitForElementPresent(selectors.login, defaultTimeout)
 }
 
 module.exports = {
@@ -29,17 +34,21 @@ module.exports = {
     // init
     browser
       .url(host + ':' + port)
-      .waitForElementVisible('body', 1000)
+      .waitForElementPresent('body', defaultTimeout)
+      // .source(function (result){
+      //     console.log('src: ' + result.value);
+      // })
 
     // search dojo
     fill(browser, 'input[ng-model="search.dojo"]', 'dublin', 'Dojo search field')
     browser
       .click('button[type="submit"]')
-      .waitForElementVisible(selectors.dojoclick, 2000)
+      .waitForElementPresent('body', defaultTimeout)
+      .waitForElementPresent(selectors.dojoclick, defaultTimeout)
       .verify.visible(selectors.dojoclick, 'Dojos to click')
       .click(selectors.dojoclick)
-      .waitForElementVisible(selectors.div.main, 1000)
-      .assert.containsText(selectors.div.main, 'Dublin')
+      .waitForElementPresent(selectors.div.main, defaultTimeout)
+      .assert.containsText(selectors.div.main, 'Dublin');
 
     // register
     var payload = {
@@ -50,7 +59,7 @@ module.exports = {
 
     browser
       .click(selectors.register)
-      .waitForElementVisible('body', 1000)
+      .waitForElementPresent('body', defaultTimeout);
     fill(browser, selectors.reg.name, payload.name, 'Register name field');
     fill(browser, selectors.reg.email, payload.email, 'Register email field');
     fill(browser, selectors.reg.pass, payload.password, 'Register pass field');
@@ -59,7 +68,7 @@ module.exports = {
       .click('button[type="submit"]')
       .verify.visible('label[class="control-label has-error validationMessage"]', 'Err msg visible')
       .click('label[for="termsAndConditionsCheckbox"]') // for some reason only clicking the label checks the checkbox
-      .click('button[type="submit"]');
+      .click('button[type="submit"]')
 
     logout(browser, selectors)
 
@@ -69,13 +78,14 @@ module.exports = {
     fill(browser, selectors.log.name, payload.email, 'Login name field');
     fill(browser, selectors.log.pass, payload.password, 'Login pass field');
     browser
-      .click("input[type='submit']");
+      .click("input[type='submit']")
+      .waitForElementPresent('body', defaultTimeout);
 
     logout(browser, selectors);
 
     // end
     browser
-      // .pause(2000)
+      // .pause(defaultTimeout)
       .end();
   }
 };

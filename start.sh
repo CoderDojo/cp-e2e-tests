@@ -13,7 +13,9 @@ if [[ "$EXIST" == *"selenium-server-standalone"* ]]; then
 else
 	echo "SPAWN NEW SELENIUM"
 	FILE=$(ls "$WORKDIR/jar" | grep "selenium")
-	nohup "java" "-jar" "$WORKDIR/jar/$FILE" >"$WORKDIR/report/selenium.log" 2>&1 & echo "$!" >"$WORKDIR/report/selenium.pid" &
+	# /usr/bin/Xvfb :10 -ac -screen 0 1366x768x8 &
+	# export DISPLAY=:10
+	nohup bash -c "java -jar $WORKDIR/jar/$FILE" >"$WORKDIR/report/selenium.log" 2>&1 & echo "$!" >"$WORKDIR/report/selenium.pid" &
 	SPID=$(cat $WORKDIR/report/selenium.pid)
 fi
 echo "SELENIUM PID IS $SPID"
@@ -31,6 +33,7 @@ printf ' SUCCESS'
 
 if [[ "$IP" == "" ]]; then IP="localhost"; fi
 if [[ "$PORT" == "" ]]; then PORT="8000"; fi
+IP="http://$IP"
 
 export ENV_IP="$IP"
 export ENV_PORT="$PORT"
