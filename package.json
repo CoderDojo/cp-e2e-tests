@@ -13,8 +13,9 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-     "nightwatch": "0.6.x",
-     "cuid": "1.2.x"
+     "nightwatch": "0.6.12",
+     "cuid": "1.2.5",
+     "phantomjs": "1.9.17"
   },
   "devDependencies": {
   }

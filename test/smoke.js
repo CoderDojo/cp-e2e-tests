@@ -16,7 +16,7 @@ function click(browser, selector){
   browser
     .waitForElementVisible(selector, defaultTimeout)
     .click(selector)
-    .pause(750);
+    .pause(1000);
 }
 
 function fill(browser, selector, value, desc){

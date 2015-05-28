@@ -1,6 +1,7 @@
 #!/bin/bash
-WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 trap 'echo KILL SELENIUM; kill $SPID' EXIT
+
+if [[ ! -f "report" ]]; then mkdir "report"; fi
 
 IP="$1"
 PORT="$2"
@@ -12,11 +13,9 @@ if [[ "$EXIST" == *"selenium-server-standalone"* ]]; then
 	SPID="${PARAMS[1]}"
 else
 	echo "SPAWN NEW SELENIUM"
-	FILE=$(ls "$WORKDIR/jar" | grep "selenium")
-	# /usr/bin/Xvfb :10 -ac -screen 0 1366x768x8 &
-	# export DISPLAY=:10
-	nohup bash -c "java -jar $WORKDIR/jar/$FILE" >"$WORKDIR/report/selenium.log" 2>&1 & echo "$!" >"$WORKDIR/report/selenium.pid" &
-	SPID=$(cat $WORKDIR/report/selenium.pid)
+	FILE=$(ls "jar" | grep "selenium")
+	nohup bash -c "java -jar jar/$FILE" >"report/selenium.log" 2>&1 & echo "$!" >"report/selenium.pid" &
+	SPID=$(cat report/selenium.pid)
 fi
 echo "SELENIUM PID IS $SPID"
 
@@ -41,4 +40,4 @@ export ENV_PORT="$PORT"
 echo
 echo
 echo "RUN NIGHTWATCH"
-$WORKDIR/node_modules/.bin/nightwatch
+node_modules/.bin/nightwatch
