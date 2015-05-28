@@ -14,6 +14,6 @@
   "logout": "span[ng-click='logout()']",
   "dojoclick": "a[ng-click='viewDojo(dojo)']",
   "div": {
-    "main": "div[class='main']"
+    "ng": "div[class='ng-binding']"
   }
 }
