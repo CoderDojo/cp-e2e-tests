@@ -2,12 +2,7 @@
 
 Requires Java (tested on version 1.7.0_79)
 
+To run the tests execute
 ```
-npm start
-```
-
-or 
-
-```
-bash start.sh [ip(optional)] [port(optional)]
+npm test
 ```
