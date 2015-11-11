@@ -1,0 +1,22 @@
+{
+  "mentor1" : {
+    "login": "mentor1",
+    "password": "passmentor1"
+  },
+  "mentor2" : {
+    "login": "mentor2",
+    "password": "passmentor2"
+  },
+  "admin1" : {
+    "login": "admin1",
+    "password": "passadmin1"
+  },
+  "champion1" : {
+    "login": "champion1",
+    "password": "passchampion1"
+  },
+  "champion2" : {
+    "login": "champion2",
+    "password": "passchampion2"
+  }
+}

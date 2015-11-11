@@ -6,7 +6,7 @@ module.exports = {
     browser.page.badges().openPage();
   },
 
-  'Register Page ready': function(browser) {
+  'Register page ready': function(browser) {
     var registerPage = browser.page.badges();
 
     registerPage.expect.element('@fullName').to.be.present;
