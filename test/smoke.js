@@ -1,5 +1,7 @@
 
 module.exports = {
+  'tags': ['smoke'],
+
   'Search Test': function (client) {
     var home = client.page.home();
 

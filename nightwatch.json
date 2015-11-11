@@ -13,7 +13,7 @@
     "host" : "127.0.0.1",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "",
+      "webdriver.chrome.driver" : "./lib/chromedriver/chromedriver",
       "webdriver.ie.driver" : ""
     }
   },
@@ -31,7 +31,7 @@
       "selenium_host": "localhost",
       "screenshots" : {
         "enabled" : false,
-        "path" : ""
+        "path" : "./report"
       },
       "desiredCapabilities": {
         "browserName": "phantomjs",
@@ -40,6 +40,21 @@
         "phantomjs.binary.path": "node_modules/.bin/phantomjs",
         "phantom.binary.path": "require('phantomjs').path",
         "phantomjs.cli.args" : ["--ignore-ssl-errors=true"]
+      }
+    },
+    "chrome": {
+      "launchUrl": "http://localhost:8000",
+      "seleniumHost": "localhost",
+      "seleniumPort": 4444,
+      "silent": true,
+      "screenshots": {
+        "enabled": false,
+        "path": "./report"
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
       }
     }
   }
