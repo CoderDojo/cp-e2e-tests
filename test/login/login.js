@@ -9,9 +9,10 @@ module.exports = {
   'Login Test': function (browser) {
     var home = browser.page.login();
 
-    home.setValue('@email', 'test@test.com')
-    .setValue('@password', 'test')
-    .submit();
+    home.setValue('@email', browser.globals.mentor1.login)
+    .setValue('@password', browser.globals.mentor1.password)
+    .submit()
+    .expect.element('@userName').text.to.equal(browser.globals.mentor1.name);
   },
 
   'Logout Test': function(browser) {

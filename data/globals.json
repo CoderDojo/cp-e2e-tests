@@ -1,7 +1,8 @@
 {
   "mentor1" : {
-    "login": "mentor1",
-    "password": "passmentor1"
+    "login": "mentor1@example.com",
+    "password": "passmentor1",
+    "name": "mentor1"
   },
   "mentor2" : {
     "login": "mentor2",

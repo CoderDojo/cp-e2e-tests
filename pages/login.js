@@ -4,6 +4,7 @@ var loginCommands = {
     .waitForElementVisible('body');
     return this;
   },
+
   submit: function() {
     this.waitForElementVisible('@submitButton', 1000)
       .click('@submitButton')
@@ -20,6 +21,7 @@ module.exports = {
   elements: {
     email: { selector: 'input[name="email"]' },
     password: { selector: 'input[name="password"]' },
-    submitButton: { selector: '[type=submit]' }
+    submitButton: { selector: '[type=submit]' },
+    userName: {selector: 'a[ui-sref^="user-profile"]'}
   }
 };
