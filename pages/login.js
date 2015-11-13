@@ -22,6 +22,8 @@ module.exports = {
     email: { selector: 'input[name="email"]' },
     password: { selector: 'input[name="password"]' },
     submitButton: { selector: '[type=submit]' },
-    userName: {selector: 'a[ui-sref^="user-profile"]'}
+    userName: {selector: 'a[ui-sref^="user-profile"]'},
+    eventsView: {selector: 'a[href^="/dashboard/dojo/ie/enniscorthy%2Fenniscorthy-dojo#events"]'},
+    listingView: {selector: 'a[href="/dashboard/dojo/ie/enniscorthy%2Fenniscorthy-dojo"]'}
   }
 };
