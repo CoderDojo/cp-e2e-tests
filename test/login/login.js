@@ -12,7 +12,7 @@ module.exports = {
     home.setValue('@email', browser.globals.mentor1.login)
     .setValue('@password', browser.globals.mentor1.password)
     .submit()
-    .expect.element('@userName').text.to.equal(browser.globals.mentor1.name);
+    .expect.element('@userName').text.to.equal(browser.globals.mentor1.fullName);
   },
 
   'Multiple Clicks On User Name': function(browser) {
