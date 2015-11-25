@@ -1,23 +1,41 @@
 {
   "mentor1" : {
+    "fullName": "Mentor1",
     "login": "mentor1@example.com",
-    "password": "passmentor1",
-    "name": "mentor1"
+    "password": "testmentor1",
+    "userType": "Mentor/Volunteer",
+    "mailingListCheckbox": true,
+    "termsAndConditionsCheckbox": true
   },
   "mentor2" : {
-    "login": "mentor2",
-    "password": "passmentor2"
+    "fullName": "Mentor2",
+    "login": "mentor2@example.com",
+    "password": "testmentor2",
+    "userType": "Mentor/Volunteer",
+    "mailingListCheckbox": true,
+    "termsAndConditionsCheckbox": true
   },
-  "admin1" : {
-    "login": "admin1",
-    "password": "passadmin1"
+  "admin" : {
+    "fullName": "Admin",
+    "login": "admin@example.com",
+    "password": "test"
   },
   "champion1" : {
-    "login": "champion1",
-    "password": "passchampion1"
+    "fullName": "Champion1",
+    "login": "champion1@example.com",
+    "password": "testchampion1",
+    "userType": "Champion",
+    "mailingListCheckbox": true,
+    "termsAndConditionsCheckbox": true
   },
-  "champion2" : {
-    "login": "champion2",
-    "password": "passchampion2"
+  "dojo1": {
+    "dateOfBirth": "1978-1-1",
+    "telephone": "+353412345678",
+    "country": "Ireland",
+    "city": "Dublin",
+    "address": "Dogpatch Labs, 35 Barrow Street",
+    "howDidYouHear": "Other CoderDojo Volunteers",
+    "dojoName": "Dojo1 Name",
+    "dojoEmail": "dojo1@example.com"
   }
 }
