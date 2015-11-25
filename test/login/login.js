@@ -6,7 +6,7 @@ module.exports = {
     browser.page.login().openPage();
   },
 
-  'Login Test': function (browser) {
+  'Mentor Login': function (browser) {
     var home = browser.page.login();
 
     home.setValue('@email', browser.globals.mentor1.login)
@@ -16,6 +16,9 @@ module.exports = {
   },
 
   'Multiple Clicks On User Name': function(browser) {
+    console.log('DISABLED');
+    return;
+
     var myDojosUrl = browser.launch_url + '/dashboard/my-dojos';
     var home = browser.page.login();
 
@@ -28,6 +31,9 @@ module.exports = {
   },
 
   'Show Dojos, Show Events, Dojo View Back and Forth': function(browser) {
+    console.log('DISABLED');
+    return;
+
     var myDojosUrl = browser.launch_url + '/dashboard/my-dojos';
     var home = browser.page.login();
     for (var i=0; i<8; i++) {
@@ -44,9 +50,6 @@ module.exports = {
       home.navigate(myDojosUrl)
       .waitForElementVisible('@eventsView', 1000);
     }
-  },
-
-  'Logout Test': function(browser) {
   },
 
   after : function(browser) {

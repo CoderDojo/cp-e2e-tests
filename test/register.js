@@ -1,13 +1,13 @@
 
 module.exports = {
-  'tags': ['badges'],
+  'tags': ['register'],
 
   before : function(browser) {
-    browser.page.badges().openPage();
+    browser.page.register().openPage();
   },
 
   'Register page ready': function(browser) {
-    var registerPage = browser.page.badges();
+    var registerPage = browser.page.register();
 
     registerPage.expect.element('@fullName').to.be.present;
     registerPage.expect.element('@emailAddress').to.be.present;
@@ -26,6 +26,5 @@ module.exports = {
   },
 
   after : function(browser) {
-    console.log('remove the 2 accounts');
   }
 };
