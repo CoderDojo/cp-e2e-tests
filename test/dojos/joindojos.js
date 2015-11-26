@@ -4,8 +4,8 @@ module.exports = {
 
   before : function(browser) {
     // login
-    browser.page.login().openPage();
     var home = browser.page.login();
+    home.openPage();
 
     home.setValue('@email', browser.globals.champion1.login)
     .setValue('@password', browser.globals.champion1.password)
@@ -16,7 +16,7 @@ module.exports = {
     browser.page.joindojo().openPage();
   },
 
-  'Verify dojo': function(browser) {
+  'Verify Dojo Form': function(browser) {
     var registerPage = browser.page.joindojo();
 
     registerPage.expect.element('@emailAddress').to.be.present;
@@ -37,10 +37,20 @@ module.exports = {
     registerPage.setDateOfBirth(browser, browser.globals.dojo1.dateOfBirth)
     .setValue('@telephoneNumber', browser.globals.dojo1.telephone)
     .selectCountry(browser, browser.globals.dojo1.country)
-    .api.execute('angular.element("input[name=dateOfBirth]").val("'+ browser.globals.dojo1.dateOfBirth +'")');
-    registerPage.selectCity(browser, browser.globals.dojo1.city)
+    .setDateOfBirth(browser, browser.globals.dojo1.dateOfBirth)
+    .selectCity(browser, browser.globals.dojo1.city)
     .setValue('@address', browser.globals.dojo1.address)
     .selectHowDidYouHear(browser, browser.globals.dojo1.howDidYouHear)
+    .submit()
+    .confirmFormSubmit()
+    .setValue('@fullNameCharter', browser.globals.champion1.fullName)
+    .charterCheckBoxCheck(browser)
+    .charterSubmit();
+  },
+
+  'Verify Created Dojo': function(browser) {
+    var myDojoPage = browser.page.mydojos();
+    myDojoPage.openPage();
   },
 
   'Join Dojo': function(browser) {
