@@ -1,10 +1,10 @@
 var myDojosCommands = {
-  openPage: function(url) {
+  openPage: function (url) {
     this.navigate(url)
     .waitForElementVisible('body');
     return this;
   },
-  submit: function() {
+  submit: function () {
     this.waitForElementVisible('@submitButton', 1000)
       .click('@submitButton')
       .api.pause(1000);
@@ -13,7 +13,7 @@ var myDojosCommands = {
 };
 
 module.exports = {
-  url: function() {
+  url: function () {
     return this.api.launchUrl + '/dashboard/my-dojos';
   },
   commands: [myDojosCommands],

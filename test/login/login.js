@@ -2,7 +2,7 @@
 module.exports = {
   'tags': ['login'],
 
-  before : function(browser) {
+  before: function (browser) {
     browser.page.login().openPage();
   },
 
@@ -15,28 +15,34 @@ module.exports = {
     .expect.element('@userName').text.to.equal(browser.globals.mentor1.fullName);
   },
 
-  'Multiple Clicks On User Name': function(browser) {
+  'Multiple Clicks On User Name': function (browser) {
     console.log('DISABLED');
-    return;
+    var disabled = true;
+    if (disabled) {
+      return;
+    }
 
     var myDojosUrl = browser.launch_url + '/dashboard/my-dojos';
     var home = browser.page.login();
 
-    home.click('@userName')
-    home.click('@userName')
-    home.click('@userName')
+    home.click('@userName');
+    home.click('@userName');
+    home.click('@userName');
     home.api.pause(1000);
     home.navigate(myDojosUrl)
     .waitForElementVisible('@eventsView', 1000);
   },
 
-  'Show Dojos, Show Events, Dojo View Back and Forth': function(browser) {
+  'Show Dojos, Show Events, Dojo View Back and Forth': function (browser) {
     console.log('DISABLED');
-    return;
+    var disabled = true;
+    if (disabled) {
+      return;
+    }
 
     var myDojosUrl = browser.launch_url + '/dashboard/my-dojos';
     var home = browser.page.login();
-    for (var i=0; i<8; i++) {
+    for (var i = 0; i < 8; i++) {
       home.navigate(myDojosUrl)
       .waitForElementVisible('@eventsView', 1000)
       .click('@eventsView')
@@ -52,7 +58,7 @@ module.exports = {
     }
   },
 
-  after : function(browser) {
+  after: function (browser) {
     browser.end();
   }
 };

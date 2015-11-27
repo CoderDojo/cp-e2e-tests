@@ -4,7 +4,8 @@
   "description": "End to end testing",
   "main": "",
   "scripts": {
-    "test": "nightwatch"
+    "test": "nightwatch",
+    "lint": "./node_modules/.bin/semistandard test/**/*.js pages/**/*.js commands/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,7 @@
     "phantomjs": "1.9.18",
     "selenium-server": "2.48.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "semistandard": "7.0.4"
+  }
 }

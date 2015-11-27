@@ -1,32 +1,32 @@
 var dojoCommands = {
-  openPage: function() {
+  openPage: function () {
     this.navigate()
     .waitForElementVisible('body');
     return this;
   },
 
-  submit: function() {
+  submit: function () {
     this.waitForElementVisible('@submitButton')
       .click('@submitButton')
       .api.pause(1000);
     return this;
   },
 
-  confirmFormSubmit: function() {
+  confirmFormSubmit: function () {
     this.waitForElementVisible('@confirmButton')
       .click('@confirmButton')
       .api.pause(1000);
     return this;
   },
 
-  charterSubmit: function() {
+  charterSubmit: function () {
     this.waitForElementVisible('@charterConfirmButton')
       .click('@charterConfirmButton')
       .api.pause(1000);
     return this;
   },
 
-  selectCountry: function(client, countryName) {
+  selectCountry: function (client, countryName) {
     this.waitForElementVisible('@selectCountry')
       .click('@selectCountry')
       .api.pause(1000);
@@ -35,7 +35,7 @@ var dojoCommands = {
     return this;
   },
 
-  selectCity: function(client, cityName) {
+  selectCity: function (client, cityName) {
     this.waitForElementVisible('@cityTown')
       .click('@cityTown')
       .api.pause(1000);
@@ -46,7 +46,7 @@ var dojoCommands = {
     return this;
   },
 
-  setDateOfBirth: function(client, dateOfBirth) {
+  setDateOfBirth: function (client, dateOfBirth) {
     this.waitForElementVisible('@dateOfBirth')
       .click('@dateOfBirth')
       .api.pause(1000);
@@ -59,7 +59,7 @@ var dojoCommands = {
     return this;
   },
 
-  selectHowDidYouHear: function(client, howDidYouHear) {
+  selectHowDidYouHear: function (client, howDidYouHear) {
     this.waitForElementVisible('@howDidYouHear')
       .click('@howDidYouHear')
       .api.pause(1000);
@@ -71,7 +71,7 @@ var dojoCommands = {
     return this;
   },
 
-  charterCheckBoxCheck: function() {
+  charterCheckBoxCheck: function () {
     this.click('@charterCheckBox')
       .api.pause(1000);
 
@@ -80,7 +80,7 @@ var dojoCommands = {
 };
 
 module.exports = {
-  url: function() {
+  url: function () {
     return this.api.launchUrl + '/dashboard/start-dojo';
   },
   commands: [dojoCommands],

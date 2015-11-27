@@ -1,11 +1,11 @@
 var loginCommands = {
-  openPage: function() {
+  openPage: function () {
     this.navigate()
     .waitForElementVisible('body');
     return this;
   },
 
-  submit: function() {
+  submit: function () {
     this.waitForElementVisible('@submitButton', 1000)
       .click('@submitButton')
       .api.pause(1000);
@@ -14,7 +14,7 @@ var loginCommands = {
 };
 
 module.exports = {
-  url: function() {
+  url: function () {
     return this.api.launchUrl + '/login';
   },
   commands: [loginCommands],

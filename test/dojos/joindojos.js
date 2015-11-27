@@ -1,8 +1,7 @@
 
 module.exports = {
   'tags': ['joindojo'],
-
-  before : function(browser) {
+  before: function (browser) {
     // login
     var home = browser.page.login();
     home.openPage();
@@ -16,7 +15,7 @@ module.exports = {
     browser.page.joindojo().openPage();
   },
 
-  'Verify Dojo Form': function(browser) {
+  'Verify Dojo Form': function (browser) {
     var registerPage = browser.page.joindojo();
 
     registerPage.expect.element('@emailAddress').to.be.present;
@@ -31,7 +30,7 @@ module.exports = {
     registerPage.expect.element('@submitButton').to.be.present;
   },
 
-  'Create Dojo': function(browser) {
+  'Create Dojo': function (browser) {
     var registerPage = browser.page.joindojo();
 
     registerPage.setDateOfBirth(browser, browser.globals.dojo1.dateOfBirth)
@@ -48,21 +47,21 @@ module.exports = {
     .charterSubmit();
   },
 
-  'Verify Created Dojo': function(browser) {
+  'Verify Created Dojo': function (browser) {
     var myDojoPage = browser.page.mydojos();
     myDojoPage.openPage();
   },
 
-  'Join Dojo': function(browser) {
+  'Join Dojo': function (browser) {
   },
 
-  'Remove Dojo': function(browser) {
+  'Remove Dojo': function (browser) {
   },
 
-  'End Test': function(browser) {
+  'End Test': function (browser) {
     browser.end();
   },
 
-  after : function(browser) {
+  after: function (browser) {
   }
 };
