@@ -36,6 +36,9 @@
     "address": "Dogpatch Labs, 35 Barrow Street",
     "howDidYouHear": "Other CoderDojo Volunteers",
     "dojoName": "Dojo1 Name",
-    "dojoEmail": "dojo1@example.com"
+    "dojoEmail": "dojo1@example.com",
+    "technicalMentors": "dojo technical mentors",
+    "venue": "dojo venue",
+    "launchDate": "dojo launch date"
   }
 }

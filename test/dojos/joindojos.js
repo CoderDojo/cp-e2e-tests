@@ -35,16 +35,44 @@ module.exports = {
 
     registerPage.setDateOfBirth(browser, browser.globals.dojo1.dateOfBirth)
     .setValue('@telephoneNumber', browser.globals.dojo1.telephone)
-    .selectCountry(browser, browser.globals.dojo1.country)
+    .selectCountry('@selectCountry', browser, browser.globals.dojo1.country)
     .setDateOfBirth(browser, browser.globals.dojo1.dateOfBirth)
     .selectCity(browser, browser.globals.dojo1.city)
     .setValue('@address', browser.globals.dojo1.address)
     .selectHowDidYouHear(browser, browser.globals.dojo1.howDidYouHear)
     .submit()
-    .confirmFormSubmit()
+    .confirmFormSubmit('@confirmButton')
     .setValue('@fullNameCharter', browser.globals.champion1.fullName)
-    .charterCheckBoxCheck(browser)
+    .checkBoxCheck('@charterCheckBox')
     .charterSubmit();
+
+    // step - setup your dojo
+    registerPage.selectGroup('@gatherTeamGroup')
+    .checkboxCheck('@gatherTeamCheckbox')
+    .setValue('@gatherTeam', browser.globals.dojo1.technicalMentors)
+    .selectGroup('@findVenueGroup')
+    .checkboxCheck('@findVenueCheckbox')
+    .setValue('@findVenue', browser.globals.dojo1.venue)
+    .selectGroup('@planDojoGroup')
+    .checkboxCheck('@planDojoCheckbox')
+    .setValue('@planDojo', browser.globals.dojo1.launchDate)
+    .selectGroup('@promoteDojoGroup')
+    .checkboxCheck('@promoteDojo')
+    .selectGroup('@embodyEthosGroup')
+    .checkboxCheck('@embodyEthos')
+    .confirmFormSubmit('@saveDojoSetupButton')
+    .confirmFormSubmit('@confirmButton');
+
+    // step - fill dojo listing
+    registerPage.setValue('@dojoName', browser.globals.dojo1.dojoName)
+    .setValue('@dojoAddress', browser.globals.dojo1.address)
+    .setValue('@dojoEmail', browser.globals.dojo1.dojoEmail)
+    .selectCombo('@dojoCountry', browser, browser.globals.dojo1.country)
+    .selectCombo('@dojoCity', browser, browser.globals.dojo1.city)
+    .confirmFormSubmit('@createDojoButton')
+    .confirmFormSubmit('@confirmButton');
+
+    registerPage.api.pause();
   },
 
   'Verify Created Dojo': function (browser) {
