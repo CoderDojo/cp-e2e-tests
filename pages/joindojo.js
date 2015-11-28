@@ -118,7 +118,7 @@ module.exports = {
     confirmButton: { selector: 'button[ng-click="ok()"]' },
 
     fullNameCharter: {selector: '#agreedToBy'},
-    charterCheckBox: {selector: '#agreeToCharterCheckbox'},
+    charterCheckBox: {selector: 'label[for="agreeToCharterCheckbox"]'},
     charterConfirmButton: {selector: 'button[type="submit"]:not([ng-click])'},
     gatherTeamGroup: {selector: 'div[id="accordion"] > div:nth-child(1)'},
     gatherTeamCheckbox: {selector: 'label[for="findTechnicalMentors"]'},

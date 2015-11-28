@@ -41,9 +41,10 @@ module.exports = {
     .setValue('@address', browser.globals.dojo1.address)
     .selectHowDidYouHear(browser, browser.globals.dojo1.howDidYouHear)
     .submit()
-    .confirmFormSubmit('@confirmButton')
-    .setValue('@fullNameCharter', browser.globals.champion1.fullName)
-    .checkBoxCheck('@charterCheckBox')
+    .confirmFormSubmit('@confirmButton');
+
+    registerPage.setValue('@fullNameCharter', browser.globals.champion1.fullName)
+    .checkboxCheck('@charterCheckBox')
     .charterSubmit();
 
     // step - setup your dojo
@@ -71,8 +72,6 @@ module.exports = {
     .selectCombo('@dojoCity', browser, browser.globals.dojo1.city)
     .confirmFormSubmit('@createDojoButton')
     .confirmFormSubmit('@confirmButton');
-
-    registerPage.api.pause();
   },
 
   'Verify Created Dojo': function (browser) {
