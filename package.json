@@ -11,8 +11,11 @@
     "type": "git",
     "url": "git://github.com/CoderDojo/cp-e2e-tests.git"
   },
-  "author": "",
-  "license": "BSD",
+  "author": "CoderDojo Foundation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CoderDojo/community-platform/issues"
+  },
   "dependencies": {
     "chromedriver": "^2.20.0",
     "cuid": "1.3.8",
