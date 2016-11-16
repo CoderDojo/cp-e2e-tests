@@ -1,0 +1,33 @@
+{
+  "name": "e2e-tests",
+  "version": "0.0.1",
+  "description": "End to end testing",
+  "main": "",
+  "scripts": {
+    "test": "./node_modules/.bin/gulp",
+    "report": "./node_modules/.bin/allure report open",
+    "lint": "./node_modules/.bin/semistandard test/**/*.js pages/**/*.js commands/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CoderDojo/cp-e2e-tests.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "allure-commandline": "^1.4.23",
+    "chai": "^3.5.0",
+    "chromedriver": "^2.25.1",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.5.2",
+    "gulp-webdriver": "^2.0.2",
+    "lodash": "^4.16.6",
+    "moment": "^2.16.0",
+    "wdio-allure-reporter": "^0.1.2",
+    "wdio-mocha-framework": "^0.5.3",
+    "wdio-selenium-standalone-service": "0.0.7",
+    "wdio-spec-reporter": "0.0.3",
+    "webdriverio": "^4.4.0"
+  }
+}
