@@ -4,7 +4,7 @@
   "description": "End to end testing",
   "main": "",
   "scripts": {
-    "test": "./node_modules/.bin/gulp",
+    "test": "./node_modules/.bin/gulp --color",
     "report": "./node_modules/.bin/allure report open",
     "lint": "./node_modules/.bin/semistandard test/**/*.js pages/**/*.js commands/**/*.js"
   },
