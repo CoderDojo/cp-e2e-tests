@@ -1,5 +1,9 @@
+var LoginPage = require('../pages/login');
+
 browser.addCommand('login', function (email, password) {
-    browser.setValue('input[name="email"]', email);
-    browser.setValue('input[name="password"]', password);
-    browser.click('button[value="Login"]');
+  LoginPage.userMenu_login.click();
+  LoginPage.email.waitForVisible();
+  LoginPage.email.setValue(email);
+  LoginPage.password.setValue(password);
+  LoginPage.submit.click();
 });

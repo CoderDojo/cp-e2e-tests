@@ -64,6 +64,11 @@ var RegisterPage = Object.create(Page, {
       return browser.checkRecaptcha('[vc-recaptcha] iframe');
     }
   },
+  register: {
+    value: function (profileData) {
+      return browser.register(profileData);
+    }
+  },
   open: {
     value: function () {
       return Page.open.call(this, 'register');

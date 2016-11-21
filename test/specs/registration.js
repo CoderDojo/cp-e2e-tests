@@ -32,7 +32,7 @@ describe('Registration tests', function () {
     var date = new Date();
     date.setFullYear(date.getFullYear() - 25);
     RegisterPage.open();
-    browser.register(_.extend(baseProfile, {
+    RegisterPage.register(_.extend(baseProfile, {
       email: 'johndoe' + (new Date()).getTime() + '@example.com',
       dateOfBirth: date
     }));
@@ -57,7 +57,7 @@ describe('Registration tests', function () {
     var date = new Date();
     date.setFullYear(date.getFullYear() - 15);
     RegisterPage.open();
-    browser.register(_.extend(baseProfile, {
+    RegisterPage.register(_.extend(baseProfile, {
       email: 'johndoe' + (new Date()).getTime() + '@example.com',
       dateOfBirth: date
     }));
@@ -82,7 +82,7 @@ describe('Registration tests', function () {
     var date = new Date();
     date.setFullYear(date.getFullYear() - 10);
     RegisterPage.open();
-    browser.register(_.extend(baseProfile, {
+    RegisterPage.register(_.extend(baseProfile, {
       email: 'johndoe' + (new Date()).getTime() + '@example.com',
       dateOfBirth: date
     }))
