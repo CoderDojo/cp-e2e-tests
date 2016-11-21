@@ -10,12 +10,26 @@ gulp.task('clean', function () {
   ]);
 });
 
-gulp.task('test', ['clean'], function() {
-    return gulp.src('wdio.conf.js').pipe(webdriver());
+var testsFailed = false;
+gulp.task('wdio', ['clean'], function() {
+    return gulp.src('wdio.conf.js').pipe(webdriver())
+    .on('error', function (err) {
+      // We still want the report to generate if a test fails, so surpress the error
+      testsFailed = true;
+      this.emit('end');
+    });
 });
 
-gulp.task('generate-report', ['clean', 'test'], shell.task([
+gulp.task('generate-report', ['clean', 'wdio'], shell.task([
   './node_modules/.bin/allure generate allure-results'
 ]));
 
-gulp.task('default', ['generate-report']);
+gulp.task('test', ['generate-report'], function () {
+  // If tests failed earlier, we want to make sure that gulp exits with 1
+  if (testsFailed) {
+    console.log('Some tests failed. Check the report by running `npm run report`.');
+    process.exit(1);
+  }
+});
+
+gulp.task('default', ['test']);
