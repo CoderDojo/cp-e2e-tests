@@ -8,7 +8,7 @@ var MyDojosPage = require('../../pages/myDojos');
 var profilePage = require('../../pages/profiles/view');
 
 describe.only('Manage users tests', function () {
-  this.timeout(200000);
+  this.timeout(100000000);
 
   after(function () {
     browser.deleteCookie();
@@ -93,9 +93,9 @@ describe.only('Manage users tests', function () {
   it.only('should be able to award badge', function () {
     var user = 'mentor1';
     page.user(user).click();
-    page.awardBadgeButton.waitForVisible(4000);
+    page.awardBadgeButton.waitForVisible();
     page.awardBadgeButton.click();
-    page.awardBadgeDropDownTextBox.waitForVisible(4000);
+    page.awardBadgeDropDownTextBox.waitForVisible();
     page.awardBadgeDropDown('1', 'My 1st Dojo!');
     page.awardBadgeEvidenceTextArea.setValue('Bacon ipsum dolor amet hamburger capicola rump alcatra pancetta venison meatball. Shank pork tail ball tip, brisket rump short loin pancetta short ribs pork chop turkey beef. Jowl picanha pastrami tenderloin. Cupim pork chop ribeye kielbasa ball tip boudin short ribs short loin ham doner filet mignon burgdoggen frankfurter. Pork jowl sausage burgdoggen, ham hock tri-tip short loin pork belly tail ground round boudin sirloin swine shank. Capicola brisket short loin jowl doner.');
     page.awardBadgeSubmitButton.click();
@@ -103,13 +103,13 @@ describe.only('Manage users tests', function () {
     var validationText = 'Are you sure you want to award this badge to the below user?\n' + user;
     expect(modal.body.getText()).to.be.equal(validationText);
     modal.submit.click();
-    browser.waitUntil(function () {
-      return modal.body? validationText != modal.body.getText() : false;
-    }, 2000);
+    modal.wait(true);
+    modal.wait();
     expect(modal.body.getText()).to.be.equal('Badge Awarded!');
-    modal.submit.click();
+    modal.accept.click();
     // it shouldn't award twice
-    page.awardBadgeDropDownTextBox.waitForVisible(4000);
+    page.awardBadgeButton.click();
+    page.awardBadgeDropDownTextBox.waitForVisible();
     page.awardBadgeDropDown('1', 'My 1st Dojo!');
     page.awardBadgeEvidenceTextArea.setValue('Bacon ipsum dolor amet hamburger capicola rump alcatra pancetta venison meatball. Shank pork tail ball tip, brisket rump short loin pancetta short ribs pork chop turkey beef. Jowl picanha pastrami tenderloin. Cupim pork chop ribeye kielbasa ball tip boudin short ribs short loin ham doner filet mignon burgdoggen frankfurter. Pork jowl sausage burgdoggen, ham hock tri-tip short loin pork belly tail ground round boudin sirloin swine shank. Capicola brisket short loin jowl doner.');
     page.awardBadgeSubmitButton.click();
@@ -126,9 +126,9 @@ describe.only('Manage users tests', function () {
 
   it('should not be able to award badge when the evidence is missing', function () {
     page.user('mentor1').click();
-    page.awardBadgeButton.waitForVisible(4000);
+    page.awardBadgeButton.waitForVisible();
     page.awardBadgeButton.click();
-    page.awardBadgeDropDownTextBox.waitForVisible(2000);
+    page.awardBadgeDropDownTextBox.waitForVisible();
     page.awardBadgeDropDown('Mentor', 'Mentor Badge');
     page.awardBadgeEvidenceTextArea.clearElement();
     expect(page.awardBadgeSubmitButton.getAttribute('disabled')).to.be.equal('true');
@@ -141,9 +141,9 @@ describe.only('Manage users tests', function () {
   it('should be able to change user role', function () {
     var user = 'parent1';
     page.user(user).click();
-    page.changeUserRoleButton.waitForVisible(4000);
+    page.changeUserRoleButton.waitForVisible();
     page.changeUserRoleButton.click();
-    page.changeUserRolePopUp.waitForVisible(2000);
+    page.changeUserRolePopUp.waitForVisible();
     page.changeUserRolePopUpSubmit('volunteer').click();
     modal.wait();
     expect(modal.body.getText()).to.be.equal('User types successfully updated.');
@@ -162,7 +162,7 @@ describe.only('Manage users tests', function () {
     }
     // Set
     page.user(user).click();
-    page.permissionsButton.waitForVisible(2000);
+    page.permissionsButton.waitForVisible();
     page.permissionsButton.click();
     togglePerm('Ticketing');
     expect(page.permissionCheckbox('Ticketing').$('input').getAttribute('class')).to.include('ng-not-empty');
@@ -174,7 +174,7 @@ describe.only('Manage users tests', function () {
   it('should be able to remove an user from the dojo', function () {
     page.user('child2').click();
     var initialLength = page.users.value.length;
-    page.removeUserButton.waitForVisible(2000);
+    page.removeUserButton.waitForVisible();
     page.removeUserButton.click();
     modal.wait();
     var validationText = 'Are you sure you want to remove this user from your Dojo?';
@@ -192,7 +192,7 @@ describe.only('Manage users tests', function () {
   it('should not be able to remove the dojo owner', function () {
     page.user('champion1').click();
     var initialLength = page.users.value.length;
-    page.removeUserButton.waitForVisible(2000);
+    page.removeUserButton.waitForVisible();
     page.removeUserButton.click();
     modal.wait();
     var validationText = 'Are you sure you want to remove this user from your Dojo?';

@@ -6,14 +6,14 @@ var Profile = Object.create(Page, {
   name: {
     get: function (name) {
       var path = '.cd-profile__username h2';
-      $(path).waitForVisible(WAIT_TIME);
+      $(path).waitForVisible();
       return $(path);
     }
   },
   badges: {
     get: function (name) {
       var path = 'badges-list';
-      $(path).waitForVisible(WAIT_TIME);
+      $(path).waitForVisible();
       return $(path);
     }
   },

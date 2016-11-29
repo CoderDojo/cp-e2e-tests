@@ -13,6 +13,9 @@ if (argv.baseUrl) {
 if (argv.spec) {
   customWdioConfig.spec = argv.spec;
 }
+if (argv.logLevel) {
+  customWdioConfig.logLevel = argv.logLevel;
+}
 
 gulp.task('clean', function () {
   return del([

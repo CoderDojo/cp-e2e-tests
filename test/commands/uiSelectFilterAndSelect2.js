@@ -15,7 +15,6 @@ browser.addCommand('uiSelectFilterAndSelect2', function (prefix, name, filterTex
     resultXpath += ' and span[translate(text(), "' + filterText.toUpperCase() + '", "' + filterText.toLowerCase() + '")="' + filterText.toLowerCase() + '"]]';
   }
 
-  // $(prefix + '//div[@name="' + name + '"]').waitForVisible(2000);
   browser.click(prefix + '//div[@name="' + name + '"]')
   browser.setValue(prefix + baseXPath + '/input[contains(@class, "ui-select-search")]', filterText)
   browser.waitForVisible(resultXpath, 6000)

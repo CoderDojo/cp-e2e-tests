@@ -20,21 +20,21 @@ var DojoUsers = Object.create(Page, {
    user: {
     value: function (name) {
       var xpath = '//cd-picture-grid//p[contains(text(), "' + name + '")]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
   userTitle: {
    value: function (name) {
      var xpath = '//cd-picture-grid//div[@class="cd-picture-grid__info"][p[contains(text(), "' + name + '")]]/p[contains(@class, "cd-picture-grid__sub-caption")]';
-     $(xpath).waitForVisible(WAIT_TIME);
+     $(xpath).waitForVisible();
      return $(xpath);
    }
  },
   invitationTextBox: {
     get: function () {
       var xpath = '//input[@name="inviteMentor"]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
@@ -51,7 +51,7 @@ var DojoUsers = Object.create(Page, {
   filterTextBox: {
     get: function () {
       var xpath = '//input[@name="filterUserName"]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
@@ -67,8 +67,8 @@ var DojoUsers = Object.create(Page, {
   },
   awardBadgeButton: {
     get: function () {
-      var xpath = DojoUsers.actionBarBasePath + '//div[@class="cd-action-bar-popup-item__toggle" and @ng-click]/span';
-      $(xpath).waitForVisible(WAIT_TIME);
+      var xpath = DojoUsers.actionBarBasePath + '//div[@class="cd-action-bar-popup-item__toggle" and @ng-click]';
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
@@ -92,35 +92,35 @@ var DojoUsers = Object.create(Page, {
   awardBadgeSubmitButton: {
     get: function () {
       var xpath = '//span[@class="cd-action-bar__actions"]//div[contains(@class, "--visible")]//button[contains(@class, "cd-award-badge__selection-button") and contains(@ng-click, "awardBadge")]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
   removeUserButton: {
     get: function () {
       var xpath = DojoUsers.actionBarBasePath + '//a[contains(@class, "cd-action-bar-item--red")]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
   exportUsersButton: {
     get: function () {
       var xpath = '//a[contains(@class, "btn") and contains(@href, "/api/2.0/dojos/export-users")]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
   changeUserRoleButton: {
     get: function () {
       var xpath = DojoUsers.actionBarBasePath + '//cd-action-bar-item[contains(@ng-show, "changeRole")]/a';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
   changeUserRolePopUp: {
     get: function () {
       var xpath = '//div[@role="dialog"]/div[contains(@class, "modal-dialog")]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
@@ -128,14 +128,14 @@ var DojoUsers = Object.create(Page, {
     value: function (role) {
       // roles : parent, volunteer, etc
       var xpath = '//div[@role="dialog"]/div[contains(@class, "modal-dialog")]//div[contains(@class,"cd-join-dojo-modal__choice") and descendant::h3[contains(@class, "cd-' + role + '")]]//button[@ng-click]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
   permissionsButton: {
     get: function () {
       var xpath = '//span[contains(@ng-click, "overflowOpen") and contains(@class, "cd-action-bar-item")]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
@@ -144,14 +144,14 @@ var DojoUsers = Object.create(Page, {
       // names (implied "Admin"): Ticketing, Dojo, Background
       // var xpath = '//span[contains(@class, "cd-action-bar__overflow-menu")]//cd-action-bar-checkbox-item/label/span[contains(text(), "' + name + '" )]';
       var xpath = '//span[contains(@class, "cd-action-bar__overflow-menu")]//cd-action-bar-checkbox-item[label/span[contains(text(), "' + name + '" )]]';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
   profileLink: {
     get: function () {
       var xpath = '//span[@class="cd-action-bar__actions"]//cd-action-bar-item[contains(@ng-show, "viewProfile")]/a';
-      $(xpath).waitForVisible(WAIT_TIME);
+      $(xpath).waitForVisible();
       return $(xpath);
     }
   },
