@@ -1,5 +1,6 @@
 var commands = [
   'checkRecaptcha',
+  'insertIntoCkEditor',
   'login',
   'register',
   'selectDate',

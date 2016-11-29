@@ -4,12 +4,13 @@ Page.prototype.open = function (path) {
   path = path || '';
   browser.url('/' + path);
   browser.setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'});
+  browser.setCookie({name: 'cookieDisclaimer', value: '"confirmed"'});
 };
 
 module.exports = Object.create(new Page(), {
   userMenu: {
     get: function () {
-      $('.cd-menu__profile').waitForVisible(5000);
+      $('.cd-menu__profile').waitForVisible(10000);
       return $('.cd-menu__profile');
     }
   },

@@ -1,5 +1,5 @@
 var LoginPage = require('../pages/login');
-var loginData = require('../data/login');
+var users = require('../data/users');
 
 describe('Login tests', function () {
   this.timeout(120000);
@@ -8,12 +8,13 @@ describe('Login tests', function () {
     browser.deleteCookie();
   });
 
-  loginData.users.forEach(function (user) {
+  Object.keys(users).forEach(function (key) {
+    var user = users[key];
     it('Login as ' + user.name, function () {
       LoginPage.open();
       LoginPage.login(user.email, user.password);
       LoginPage.userMenu.waitForVisible();
-      var profileName = LoginPage.profileName.getText();
+      var profileName = LoginPage.userMenu_profileName.getText();
       expect(profileName).to.include(user.name);
     });
   });

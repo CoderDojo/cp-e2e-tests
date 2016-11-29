@@ -68,6 +68,13 @@ var ManageEventsPage = Object.create(Page, {
       return $(xpath);
     }
   },
+  createEventButton: {
+    get: function () {
+      var selector = '.btn-primary';
+      $(selector).waitForVisible(WAIT_TIME);
+      return $(selector);
+    }
+  },
   open: {
     value: function () {
       return Page.open.call(this, 'dashboard/my-dojos');

@@ -1,9 +1,15 @@
-var Page = require('./page');
+var Page = require('../page');
 
 var ManageApplicationsPage = Object.create(Page, {
   /**
    * define elements
    */
+
+  page: {
+    get: function () {
+      return $('.manage-event-applicants');
+    }
+  },
   totalEventCapacity: {
     get: function () {
       return $('//span[b[contains(text(), "Total event capacity:")]]/text()');
@@ -121,7 +127,7 @@ var ManageApplicationsPage = Object.create(Page, {
   },
   open: {
     value: function () {
-      return Page.open.call(this, 'login');
+      return Page.open.call(this);
     }
   }
 });
