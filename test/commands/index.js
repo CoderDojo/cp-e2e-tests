@@ -6,7 +6,8 @@ var commands = [
   'register',
   'selectDate',
   'selectTime',
-  'uiSelectFilterAndSelect'
+  'uiSelectFilterAndSelect',
+  'uiSelectFilterAndSelect2'
 ];
 
 commands.forEach(function (command) {

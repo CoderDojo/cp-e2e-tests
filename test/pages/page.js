@@ -2,9 +2,9 @@ function Page () {}
 
 Page.prototype.open = function (path) {
   path = path || '';
-  return browser.url('/' + path)
-    .setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'})
-    .setCookie({name: 'cookieDisclaimer', value: '"confirmed"'});
+  browser.url('/' + path);
+  browser.setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'});
+  browser.setCookie({name: 'cookieDisclaimer', value: '"confirmed"'});
 };
 
 module.exports = Object.create(new Page(), {
