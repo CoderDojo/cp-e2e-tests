@@ -20,15 +20,32 @@
     "chromedriver": "^2.25.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
+    "gulp-semistandard": "^1.0.0",
     "gulp-shell": "^0.5.2",
     "gulp-webdriver": "^2.0.2",
     "lodash": "^4.16.6",
     "moment": "^2.16.0",
     "wdio-allure-reporter": "^0.1.2",
+    "wdio-json-reporter": "^0.1.0",
     "wdio-mocha-framework": "^0.5.3",
     "wdio-selenium-standalone-service": "0.0.7",
     "wdio-spec-reporter": "0.0.3",
     "webdriverio": "^4.4.0",
     "yargs": "^6.4.0"
+  },
+  "semistandard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "expect",
+      "browser",
+      "$",
+      "$$",
+      "promiseSeries"
+    ]
   }
 }
