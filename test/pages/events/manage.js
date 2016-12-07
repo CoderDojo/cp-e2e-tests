@@ -1,5 +1,4 @@
 var Page = require('../page');
-var WAIT_TIME = 5000;
 
 var ManageEventsPage = Object.create(Page, {
   /**
@@ -8,71 +7,71 @@ var ManageEventsPage = Object.create(Page, {
   getEventLink: {
     value: function (name) {
       var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]/td/a[contains(@ui-sref, "manage-applications") and contains(text(), "' + name + '")]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getDate: {
     value: function (name) {
       var xpath = '(//tbody/tr[td/a[contains(text(), "' + name + '")]]/td)[2]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getCapacity: {
     value: function (name) {
       var xpath = '(//tbody/tr[td/a[contains(text(), "' + name + '")]]/td)[3]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getApplicants: {
     value: function (name) {
       var xpath = '(//tbody/tr[td/a[contains(text(), "' + name + '")]]/td)[4]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getAttending: {
     value: function (name) {
       var xpath = '(//tbody/tr[td/a[contains(text(), "' + name + '")]]/td)[5]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getStatus: {
     value: function (name) {
       var xpath = '(//tbody/tr[td/a[contains(text(), "' + name + '")]]/td)[6]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getEditLink: {
     value: function (name) {
       var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]/td/a[contains(@ui-sref, "edit-dojo-event")]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getManageApplicationsLink: {
     value: function (name) {
       var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]/td/a[contains(@ui-sref, "manage-applications" and not(contains(text(), "' + name + '")))]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getCancelButton: {
     value: function (name) {
       var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]/td/button[contains(@class, "btn-danger")]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   createEventButton: {
     get: function () {
       var selector = '.btn-primary';
-      $(selector).waitForVisible(WAIT_TIME);
-      return $(selector);
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   open: {

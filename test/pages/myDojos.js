@@ -1,10 +1,9 @@
 var Page = require('./page');
-var WAIT_TIME = 5000;
 
-function getDojoRow(name) {
+function getDojoRow (name) {
   var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]';
-  $(xpath).waitForVisible(WAIT_TIME);
-  return $(xpath);
+  return browser.waitForVisible(xpath)
+    .element(xpath);
 }
 
 var MyDojosPage = Object.create(Page, {
@@ -28,7 +27,6 @@ var MyDojosPage = Object.create(Page, {
   },
   getManageEventsLink: {
     value: function (name) {
-      console.log(MyDojosPage);
       return getDojoRow(name).$('a[ui-sref^="manage-dojo-events"]');
     }
   },

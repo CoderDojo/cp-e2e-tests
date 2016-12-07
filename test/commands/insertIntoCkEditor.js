@@ -1,7 +1,11 @@
 browser.addCommand('insertIntoCkEditor', function (iframeSelector, text) {
-  var ckeditorFrame = $(iframeSelector);
-  browser.frame(ckeditorFrame.value);
-  $('body').click();
-  browser.keys(text);
-  browser.frame();
+  return promiseSeries([
+    () => browser.waitForVisible(iframeSelector),
+    () => $(iframeSelector),
+    (ckeditorFrame) => browser.frame(ckeditorFrame.value),
+    () => browser.waitForVisible('body'),
+    () => browser.click('body'),
+    () => browser.keys(text),
+    () => browser.frame()
+  ]);
 });

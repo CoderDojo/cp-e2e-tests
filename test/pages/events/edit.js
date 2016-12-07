@@ -1,5 +1,4 @@
 var Page = require('../page');
-var WAIT_TIME = 5000;
 
 var EditEventPage = Object.create(Page, {
   /**
@@ -13,8 +12,8 @@ var EditEventPage = Object.create(Page, {
   eventDetailsCard: {
     get: function () {
       var selector = 'cd-expanding-card[main-title="Event Details"] .cd-expanding-card';
-      $(selector).waitForVisible(WAIT_TIME);
-      return $(selector);
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   eventName: {
@@ -90,8 +89,8 @@ var EditEventPage = Object.create(Page, {
   eventTicketsCard: {
     get: function () {
       var selector = 'cd-expanding-card[main-title="Event Tickets"] .cd-expanding-card';
-      $(selector).waitForVisible(WAIT_TIME);
-      return $(selector);
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   addSessionButton: {
@@ -156,7 +155,6 @@ var EditEventPage = Object.create(Page, {
   },
   publish: {
     get: function () {
-      console.log('getting publish button');
       return $('.btn-toolbar .btn-success');
     }
   },

@@ -7,7 +7,9 @@ var ManageApplicationsPage = Object.create(Page, {
 
   page: {
     get: function () {
-      return $('.manage-event-applicants');
+      var selector = '.manage-event-applicants';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   totalEventCapacity: {
@@ -48,11 +50,6 @@ var ManageApplicationsPage = Object.create(Page, {
   exportFullListButton: {
     get: function () {
       return $('//button[contains(text(), "Export to CSV")]/following-sibling::ul//a[contains(text(), "Export Full List")]');
-    }
-  },
-  searchName: {
-    get: function () {
-      return $('//uib-accordion[//span[@uib-accordion-header]/span[contains(text(), "' + sessionName + '")]]//input[@ng-model="guest.partialName"]');
     }
   },
   setSearchTicketType: {
@@ -120,7 +117,7 @@ var ManageApplicationsPage = Object.create(Page, {
       return $('//uib-accordion[//span[@uib-accordion-header]/span[contains(text(), "' + sessionName + '")]]//tbody/tr[td//*[contains(text(), "' + attendeeName + '")]]//input[@name="applicationApproved"]');
     }
   },
-  getAttendeeApproveCheckbox: {
+  getAttendeeCheckinCheckbox: {
     value: function (sessionName, attendeeName) {
       return $('//uib-accordion[//span[@uib-accordion-header]/span[contains(text(), "' + sessionName + '")]]//tbody/tr[td//*[contains(text(), "' + attendeeName + '")]]//input[contains(@id, "checkInCheckbox")]');
     }

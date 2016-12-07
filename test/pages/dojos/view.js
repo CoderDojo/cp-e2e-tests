@@ -1,10 +1,9 @@
 var Page = require('../page');
-var WAIT_TIME = 5000;
 
-function getEventCard(eventName) {
+function getEventCard (eventName) {
   var xpath = '//cd-event-list-item[.//h5[text()="' + eventName + '"]]';
-  $(xpath).waitForVisible(WAIT_TIME);
-  return $(xpath);
+  return browser.waitForVisible(xpath)
+    .element(xpath);
 }
 
 var ViewDojoPage = Object.create(Page, {
@@ -13,7 +12,9 @@ var ViewDojoPage = Object.create(Page, {
    */
   firstEventCard: {
     get: function () {
-      return $('cd-event-list-item');
+      var selector = 'cd-event-list-item';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   getEventCard: {

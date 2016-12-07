@@ -55,7 +55,7 @@ exports.config = {
     // By default WebdriverIO commands are executed in a synchronous way using
     // the wdio-sync package. If you still want to run your tests in an async way
     // e.g. using promises you can set the sync option to false.
-    sync: true,
+    sync: false,
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
     logLevel: 'silent',
@@ -64,14 +64,14 @@ exports.config = {
     coloredLogs: true,
     //
     // Saves a screenshot to a given path if a command fails.
-    screenshotPath: './errorShots/',
+    // screenshotPath: './errorShots/',
     //
     // Set a base URL in order to shorten url command calls. If your url parameter starts
     // with "/", then the base url gets prepended.
     baseUrl: 'http://localhost:8000',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 20000, // Yup... This makes me want to cry too...
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -115,7 +115,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporters: ['spec','allure'],
+    reporters: ['spec', 'allure'],
 
     //
     // Options to be passed to Mocha.
@@ -142,7 +142,26 @@ exports.config = {
       require('./test/commands/index');
       var chai = require('chai');
       global.expect = chai.expect;
-      chai.Should();
+      global.should = chai.Should();
+      global.promiseSeries = function (promises) {
+        var promiseChain = Promise.resolve();
+        promises.forEach(function (step) {
+          promiseChain = promiseChain.then(function (args) {
+            try {
+              var res = step(args);
+              if (res && res.then) {
+                return res;
+              } else {
+                // Allow for sync non-Promise functions to run in a chain
+                return Promise.resolve();
+              }
+            } catch (e) {
+              return Promise.reject(e);
+            }
+          });
+        });
+        return promiseChain;
+      };
     },
     //
     // Hook that gets executed before the suite starts

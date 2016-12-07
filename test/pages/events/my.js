@@ -1,5 +1,4 @@
 var Page = require('../page');
-var WAIT_TIME = 5000;
 
 var MyEventsPage = Object.create(Page, {
   /**
@@ -8,36 +7,36 @@ var MyEventsPage = Object.create(Page, {
   getEventRow: {
     value: function (eventName) {
       var xpath = '//tr[contains(@class, "event-info-row") and td[text()="' + eventName + '"]]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getEventDate: {
     value: function (eventName) {
       var xpath = '(//tr[contains(@class, "event-info-row") and td[text()="' + eventName + '"]]/td)[2]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getEventType: {
     value: function (eventName) {
       var xpath = '(//tr[contains(@class, "event-info-row") and td[text()="' + eventName + '"]]/td)[3]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getSessionDescription: {
     value: function (eventName, sessionName) {
       var xpath = '//tr[contains(@class, "event-info-row") and td[text()="' + eventName + '"]]/following-sibling::tr//*[@ng-bind="::session.name" and text()="' + sessionName + '"]/following-sibling::p[@ng-bind-html="::session.description"]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      return browser.waitForVisible(xpath)
+        .element(xpath);
     }
   },
   getSessionTickets: {
     value: function (eventName, sessionName) {
       var xpath = '//tr[contains(@class, "event-info-row") and td[text()="' + eventName + '"]]/following-sibling::tr//*[@ng-bind="::session.name" and text()="' + sessionName + '"]/following-sibling::div//p[@ng-bind="::ticket.name"]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $$(xpath);
+      return browser.waitForVisible(xpath)
+        .elements(xpath);
     }
   },
   open: {

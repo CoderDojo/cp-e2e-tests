@@ -1,5 +1,6 @@
 var commands = [
   'checkRecaptcha',
+  'getLoggedInUserInstance',
   'insertIntoCkEditor',
   'login',
   'register',

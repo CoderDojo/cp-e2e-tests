@@ -5,17 +5,19 @@ describe('Login tests', function () {
   this.timeout(120000);
 
   afterEach(function () {
-    browser.deleteCookie();
+    return browser.deleteCookie();
   });
 
   Object.keys(users).forEach(function (key) {
     var user = users[key];
     it('Login as ' + user.name, function () {
-      LoginPage.open();
-      LoginPage.login(user.email, user.password);
-      LoginPage.userMenu.waitForVisible();
-      var profileName = LoginPage.userMenu_profileName.getText();
-      expect(profileName).to.include(user.name);
+      return promiseSeries([
+        () => LoginPage.open(),
+        () => LoginPage.login(user.email, user.password),
+        () => LoginPage.userMenu.waitForVisible(),
+        () => LoginPage.userMenu_profileName.getText(),
+        (profileName) => expect(profileName).to.include(user.name)
+      ]);
     });
   });
 });

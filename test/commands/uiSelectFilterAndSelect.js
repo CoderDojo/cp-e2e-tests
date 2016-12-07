@@ -1,5 +1,5 @@
 browser.addCommand('uiSelectFilterAndSelect', function (name, filterText, selectText, highlights) {
-  highlights = highlights === false ? false : true; // default true
+  highlights = highlights !== false; // default true
   var baseXPath = '//*[contains(@class, "ui-select-container") and @name="' + name + '"]';
 
   var resultPieces = selectText.split(filterText);
@@ -21,8 +21,10 @@ browser.addCommand('uiSelectFilterAndSelect', function (name, filterText, select
     resultXpath += '[translate(text(), "' + filterText.toUpperCase() + '", "' + filterText.toLowerCase() + '")="' + selectText.toLowerCase() + '"]]';
   }
 
-  browser.click('div[name="' + name + '"]')
-  browser.setValue(baseXPath + '/input[contains(@class, "ui-select-search")]', filterText)
-  browser.waitForVisible(resultXpath, 5000)
-  browser.click(resultXpath);
+  return promiseSeries([
+    () => browser.click('div[name="' + name + '"]'),
+    () => browser.setValue(baseXPath + '/input[contains(@class, "ui-select-search")]', filterText),
+    () => browser.waitForVisible(resultXpath),
+    () => browser.click(resultXpath)
+  ]);
 });
