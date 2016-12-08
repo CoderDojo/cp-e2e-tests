@@ -193,16 +193,16 @@ describe('Creating a Future One-off Event', function () {
     ]);
   });
 
-  it('should appear correctly on the single event page', function () {
-    return promiseSeries([
-      () => MyDojosPage.userMenu.click(),
-      () => MyDojosPage.userMenu_myDojos.click(),
-      () => MyDojosPage.getListingLink(dojos.dojo1.name).click(),
-      () => ViewDojoPage.firstEventCard,
-      () => ViewDojoPage.getEventBookButton(eventDetails.name).click(),
-      () => browser.pause(10000)
-    ]);
-  });
+  // TODO: Implement the rest of the tests
+  // it('should appear correctly on the single event page', function () {
+  //   return promiseSeries([
+  //     () => MyDojosPage.userMenu.click(),
+  //     () => MyDojosPage.userMenu_myDojos.click(),
+  //     () => MyDojosPage.getListingLink(dojos.dojo1.name).click(),
+  //     () => ViewDojoPage.firstEventCard,
+  //     () => ViewDojoPage.getEventBookButton(eventDetails.name).click()
+  //   ]);
+  // });
 
   // describe('share functionality on dojo page', function () {
   //   // We don't want to check page contents here, as it could be changed by the provider
