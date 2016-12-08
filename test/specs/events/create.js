@@ -10,8 +10,6 @@ var MyEventsPage = require('../../pages/events/my');
 var ViewDojoPage = require('../../pages/dojos/view');
 
 describe('Creating a Future One-off Event', function () {
-  this.timeout(120000);
-
   // Only used in this test, no need to export to data folder
   var eventDate = new Date();
   eventDate.setDate(eventDate.getDate() + 1);

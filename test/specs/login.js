@@ -2,8 +2,6 @@ var LoginPage = require('../pages/login');
 var users = require('../data/users');
 
 describe('Login tests', function () {
-  this.timeout(120000);
-
   afterEach(function () {
     return browser.deleteCookie();
   });

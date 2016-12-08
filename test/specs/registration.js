@@ -9,7 +9,6 @@ describe('Registration tests', function () {
     country: 'Ireland',
     place: 'Dublin'
   };
-  this.timeout(120000);
 
   afterEach(function () {
     return browser.deleteCookie();
