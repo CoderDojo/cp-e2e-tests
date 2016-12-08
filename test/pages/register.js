@@ -44,6 +44,11 @@ var RegisterPage = Object.create(Page, {
       return browser.element('button.cd-wizard-submit');
     }
   },
+  dateOfBirth: {
+    get: function () {
+      return browser.element('input[name="dateOfBirth"]');
+    }
+  },
   selectDateOfBirth: {
     value: function (date) {
       return browser.selectDate('dateOfBirth', date);

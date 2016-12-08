@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var webdriver = require('gulp-webdriver');
 var del = require('del');
 var shell = require('gulp-shell');
+var semistandard = require('gulp-semistandard');
 
 var customWdioConfig = {};
 if (argv.baseUrl) {
@@ -20,8 +21,16 @@ gulp.task('clean', function () {
   ]);
 });
 
+gulp.task('semistandard', function () {
+  return gulp.src('./test/**/*.js')
+    .pipe(semistandard())
+    .pipe(semistandard.reporter('default', {
+      breakOnError: true
+    }));
+});
+
 var testsFailed = false;
-gulp.task('wdio', ['clean'], function() {
+gulp.task('wdio', ['semistandard', 'clean'], function() {
   return gulp.src('wdio.conf.js').pipe(webdriver(customWdioConfig))
   .on('error', function (err) {
     // We still want the report to generate if a test fails, so surpress the error

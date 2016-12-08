@@ -11,12 +11,24 @@ var EditEventPage = Object.create(Page, {
   },
   eventDetailsCard: {
     get: function () {
-      return $('cd-expanding-card[main-title="Event Details"] .cd-expanding-card');
+      var selector = 'cd-expanding-card[main-title="Event Details"] .cd-expanding-card';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   eventName: {
     get: function () {
       return $('input[name="event-name"]');
+    }
+  },
+  setEventDescription: {
+    value: function (text) {
+      return browser.insertIntoCkEditor('#description ~ #cke_description iframe', text);
+    }
+  },
+  eventDescription: {
+    get: function () {
+      return $('#description');
     }
   },
   recurringRadioButton: {
@@ -46,7 +58,7 @@ var EditEventPage = Object.create(Page, {
   },
   setEndTime: {
     value: function (time) {
-      return browser.selectTime('#endTime', time);
+      return browser.selectTime('[name="endTime"]', time);
     }
   },
   setRecurringDay: {
@@ -77,8 +89,8 @@ var EditEventPage = Object.create(Page, {
   eventTicketsCard: {
     get: function () {
       var selector = 'cd-expanding-card[main-title="Event Tickets"] .cd-expanding-card';
-      $(selector).waitForVisible(5000);
-      return $(selector);
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   addSessionButton: {
@@ -108,27 +120,27 @@ var EditEventPage = Object.create(Page, {
     value: function (sessionIndex, ticketIndex) {
       sessionIndex = sessionIndex || 0;
       ticketIndex = ticketIndex || 0;
-      return $('.session-' + sessionIndex + '-ticketName-' + ticketIndex);
+      return $('[name="session-' + sessionIndex + '-ticketName-' + ticketIndex + '"]');
     }
   },
-  setTicketType: {
+  setTicketUserType: {
     value: function (sessionIndex, ticketIndex, ticketType) {
       sessionIndex = sessionIndex || 0;
       ticketIndex = ticketIndex || 0;
-      return browser.uiSelectFilterAndSelect('session-' + sessionIndex + '-ticketName-' + ticketIndex, ticketType, ticketType);
+      return browser.uiSelectFilterAndSelect('session-' + sessionIndex + '-ticketUserType-' + ticketIndex, ticketType, ticketType, false);
     }
   },
   getTicketQuantityInput: {
     value: function (sessionIndex, ticketIndex) {
       sessionIndex = sessionIndex || 0;
       ticketIndex = ticketIndex || 0;
-      return $('.session-' + sessionIndex + '-ticketQuantity-' + ticketIndex);
+      return $('[name="session-' + sessionIndex + '-ticketQuantity-' + ticketIndex + '"]');
     }
   },
   getAddTicketButton: {
     value: function (sessionIndex) {
       sessionIndex = sessionIndex || 0;
-      return $('ticket-box:nth-of-type(' + (sessionIndex + 1) + ') button[ng-click="addTicket(session)"]');
+      return $('.ticket-box:nth-of-type(' + (sessionIndex + 1) + ') button[ng-click="addTicket(session)"]');
     }
   },
   isPublicCheckbox: {
