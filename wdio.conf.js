@@ -42,7 +42,7 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
         //
         browserName: 'chrome'
     }],
@@ -55,7 +55,7 @@ exports.config = {
     // By default WebdriverIO commands are executed in a synchronous way using
     // the wdio-sync package. If you still want to run your tests in an async way
     // e.g. using promises you can set the sync option to false.
-    sync: true,
+    sync: false,
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
     logLevel: 'silent',
@@ -64,7 +64,7 @@ exports.config = {
     coloredLogs: true,
     //
     // Saves a screenshot to a given path if a command fails.
-    screenshotPath: './errorShots/',
+    // screenshotPath: './errorShots/',
     //
     // Set a base URL in order to shorten url command calls. If your url parameter starts
     // with "/", then the base url gets prepended.
@@ -115,8 +115,10 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporters: ['spec','allure'],
-
+    reporters: ['spec', 'allure'],
+    // reporterOptions: {
+    //   outputDir: './'
+    // },
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -143,6 +145,34 @@ exports.config = {
       var chai = require('chai');
       global.expect = chai.expect;
       chai.Should();
+
+      global.runTestSteps = function (steps) {
+         return new Promise(function (resolve, reject) {
+           var promiseChain = Promise.resolve();
+           steps.forEach(function (step) {
+             promiseChain = promiseChain.then(function (args) {
+               try {
+                 var res = step(args);
+                 if (res && res.then) {
+                   return res;
+                 } else {
+                   // Allow for sync non-Promise functions to run in a chain
+                   return Promise.resolve();
+                 }
+               } catch (e) {
+                 reject(e);
+               }
+             });
+           });
+           promiseChain
+             .then(() => {
+               resolve();
+             })
+             .catch((err) => {
+               reject(err);
+             });
+         });
+       };
     },
     //
     // Hook that gets executed before the suite starts

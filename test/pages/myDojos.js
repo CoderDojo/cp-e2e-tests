@@ -15,8 +15,11 @@ var MyDojosPage = Object.create(Page, {
   getManageUsersLink: {
     value: function (name) {
       var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]/td/a[contains(@ui-sref, "manage-dojo-users")]';
-      $(xpath).waitForVisible(WAIT_TIME);
-      return $(xpath);
+      // browser.waitForVisible(xpath, WAIT_TIME * 3);
+      // return $(xpath);
+      return browser.waitForVisible(xpath, WAIT_TIME * 3).then(function () {
+        return $(xpath);
+      });
     }
   },
   getManageEventsLink: {

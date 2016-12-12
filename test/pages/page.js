@@ -2,20 +2,24 @@ function Page () {}
 
 Page.prototype.open = function (path) {
   path = path || '';
-  browser.url('/' + path);
-  browser.setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'});
+  path = path.indexOf('http') > -1 ? path : '/' + path;
+  return browser.url(path)
+  .setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'});
 };
 
 module.exports = Object.create(new Page(), {
   userMenu: {
     get: function () {
-      $('.cd-menu__profile').waitForVisible(5000);
-      return $('.cd-menu__profile');
+      return $('.cd-menu__profile').waitForVisible(5000)
+      .then(function(){
+        return $('.cd-menu__profile');
+      });
     }
   },
   userMenu_login: {
     get: function () {
-      return $('.cd-menu__account a[href="/login"]');
+      var path = '.cd-menu__account a[href="/login"]';
+      return $(path).waitForVisible().$(path);
     }
   },
   userMenu_register: {

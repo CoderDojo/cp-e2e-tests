@@ -16,7 +16,7 @@ var LoginPage = Object.create(Page, {
   },
   submit: {
     get: function () {
-      return $('input[value="Login"]');
+      return $('input[type="submit"]');
     }
   },
   open: {

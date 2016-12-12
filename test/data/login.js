@@ -7,5 +7,9 @@ module.exports = {
     email: 'guillaume@coderdojo.org',
     password: 'test',
     name: 'Guillaume Feliciano'
+  },
+  { email: 'manager1@example.com',
+    password: 'Manager1@Zen',
+    name: 'manager1'
   }]
 };
