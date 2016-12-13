@@ -1,7 +1,4 @@
-var Page = require('../page');
-var WAIT_TIME = 5000;
-
-var Pagination = Object.create({},{
+var Pagination = Object.create({}, {
 
   nextPage: {
     get: function (prefix) {

@@ -1,6 +1,4 @@
 var Page = require('../page');
-var WAIT_TIME = 5000;
-
 
 var Profile = Object.create(Page, {
   name: {
@@ -16,7 +14,7 @@ var Profile = Object.create(Page, {
       $(path).waitForVisible();
       return $(path);
     }
-  },
+  }
 });
 
 module.exports = Profile;
