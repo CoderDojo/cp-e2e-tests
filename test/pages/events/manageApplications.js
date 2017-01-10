@@ -1,9 +1,17 @@
-var Page = require('./page');
+var Page = require('../page');
 
 var ManageApplicationsPage = Object.create(Page, {
   /**
    * define elements
    */
+
+  page: {
+    get: function () {
+      var selector = '.manage-event-applicants';
+      return browser.waitForVisible(selector)
+        .element(selector);
+    }
+  },
   totalEventCapacity: {
     get: function () {
       return $('//span[b[contains(text(), "Total event capacity:")]]/text()');
@@ -42,11 +50,6 @@ var ManageApplicationsPage = Object.create(Page, {
   exportFullListButton: {
     get: function () {
       return $('//button[contains(text(), "Export to CSV")]/following-sibling::ul//a[contains(text(), "Export Full List")]');
-    }
-  },
-  searchName: {
-    get: function () {
-      return $('//uib-accordion[//span[@uib-accordion-header]/span[contains(text(), "' + sessionName + '")]]//input[@ng-model="guest.partialName"]');
     }
   },
   setSearchTicketType: {
@@ -114,14 +117,14 @@ var ManageApplicationsPage = Object.create(Page, {
       return $('//uib-accordion[//span[@uib-accordion-header]/span[contains(text(), "' + sessionName + '")]]//tbody/tr[td//*[contains(text(), "' + attendeeName + '")]]//input[@name="applicationApproved"]');
     }
   },
-  getAttendeeApproveCheckbox: {
+  getAttendeeCheckinCheckbox: {
     value: function (sessionName, attendeeName) {
       return $('//uib-accordion[//span[@uib-accordion-header]/span[contains(text(), "' + sessionName + '")]]//tbody/tr[td//*[contains(text(), "' + attendeeName + '")]]//input[contains(@id, "checkInCheckbox")]');
     }
   },
   open: {
     value: function () {
-      return Page.open.call(this, 'login');
+      return Page.open.call(this);
     }
   }
 });

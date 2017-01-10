@@ -3,33 +3,38 @@ function Page () {}
 Page.prototype.open = function (path) {
   path = path || '';
   path = path.indexOf('http') > -1 ? path : '/' + path;
-  return browser.url(path)
-  .setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'});
+  return browser.url('/' + path)
+    .setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'})
+    .setCookie({name: 'cookieDisclaimer', value: '"confirmed"'});
 };
 
 module.exports = Object.create(new Page(), {
   userMenu: {
     get: function () {
-      return $('.cd-menu__profile').waitForVisible(5000)
-      .then(function(){
-        return $('.cd-menu__profile');
-      });
+      var selector = '.cd-menu__profile';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   userMenu_login: {
     get: function () {
-      var path = '.cd-menu__account a[href="/login"]';
-      return $(path).waitForVisible().$(path);
+      var selector = '.cd-menu__account a[href="/login"]';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   userMenu_register: {
     get: function () {
-      return $('.cd-menu__account a[href="/register"]');
+      var selector = '.cd-menu__account a[href="/register"]';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   userMenu_profileName: {
     get: function () {
-      return $('.cd-menu__profile-name');
+      var selector = '.cd-menu__profile-name';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   userMenu_myProfile: {
@@ -76,5 +81,5 @@ module.exports = Object.create(new Page(), {
     value: function (email, password) {
       return browser.login(email, password);
     }
-  },
+  }
 });

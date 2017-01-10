@@ -71,7 +71,7 @@ exports.config = {
     baseUrl: 'http://localhost:8000',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 20000, // Yup... This makes me want to cry too...
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -116,14 +116,12 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
     reporters: ['spec', 'allure'],
-    // reporterOptions: {
-    //   outputDir: './'
-    // },
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+        timeout: 120000
     },
     //
     // =====
@@ -144,35 +142,26 @@ exports.config = {
       require('./test/commands/index');
       var chai = require('chai');
       global.expect = chai.expect;
-      chai.Should();
-
-      global.runTestSteps = function (steps) {
-         return new Promise(function (resolve, reject) {
-           var promiseChain = Promise.resolve();
-           steps.forEach(function (step) {
-             promiseChain = promiseChain.then(function (args) {
-               try {
-                 var res = step(args);
-                 if (res && res.then) {
-                   return res;
-                 } else {
-                   // Allow for sync non-Promise functions to run in a chain
-                   return Promise.resolve();
-                 }
-               } catch (e) {
-                 reject(e);
-               }
-             });
-           });
-           promiseChain
-             .then(() => {
-               resolve();
-             })
-             .catch((err) => {
-               reject(err);
-             });
-         });
-       };
+      global.should = chai.Should();
+      global.promiseSeries = function (promises) {
+        var promiseChain = Promise.resolve();
+        promises.forEach(function (step) {
+          promiseChain = promiseChain.then(function (args) {
+            try {
+              var res = step(args);
+              if (res && res.then) {
+                return res;
+              } else {
+                // Allow for sync non-Promise functions to run in a chain
+                return Promise.resolve();
+              }
+            } catch (e) {
+              return Promise.reject(e);
+            }
+          });
+        });
+        return promiseChain;
+      };
     },
     //
     // Hook that gets executed before the suite starts

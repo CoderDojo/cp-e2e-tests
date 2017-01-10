@@ -20,6 +20,7 @@
     "chromedriver": "^2.25.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
+    "gulp-semistandard": "^1.0.0",
     "gulp-shell": "^0.5.2",
     "gulp-webdriver": "^2.0.2",
     "lodash": "^4.16.6",
@@ -32,7 +33,19 @@
     "webdriverio": "^4.4.0",
     "yargs": "^6.4.0"
   },
-  "dependencies": {
-    "bluebird": "^3.4.6"
+  "semistandard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "expect",
+      "browser",
+      "$",
+      "$$",
+      "promiseSeries"
+    ]
   }
 }

@@ -1,6 +1,8 @@
 var moment = require('moment');
 
 browser.addCommand('selectTime', function (selector, time) {
-  $(selector + ' input[ng-model="hours"]').setValue(moment(time).format('HH'));
-  $(selector + ' input[ng-model="minutes"]').setValue(moment(time).format('mm'));
+  return promiseSeries([
+    () => browser.setValue(selector + ' input[ng-model="hours"]', moment(time).format('HH')),
+    () => browser.setValue(selector + ' input[ng-model="minutes"]', moment(time).format('mm'))
+  ]);
 });
