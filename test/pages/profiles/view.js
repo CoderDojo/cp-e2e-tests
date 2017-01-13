@@ -1,6 +1,4 @@
 var Page = require('../page');
-var WAIT_TIME = 5000;
-
 
 var Profile = Object.create(Page, {
   name: {
@@ -12,37 +10,51 @@ var Profile = Object.create(Page, {
   nick: {
     get: function () {
       var path = '.cd-profile__username .cd-profile__alias';
-      return browser.waitForVisible(path).$(path);
+      return $(path);
     }
   },
   badges: {
     get: function () {
       var xpath = '//div[@class="profile-section"]/h3[a[@id="badges"]]';
-      return browser.waitForVisible(xpath).$(xpath);
+      return $(xpath);
     }
   },
   children: {
     get: function () {
-      var xpath = '//div[@class="profile-section"]/h3[a[@id="youths"]]';
-      return browser.waitForVisible(xpath).$(xpath);
+      var xpath = '//div[@class="profile-section"]//h3[a[@id="youths"]]';
+      return $(xpath);
     }
   },
   parents: {
     get: function () {
       var xpath = '//h3[a[@id="parents"]]';
-      return browser.waitForVisible(xpath).$(xpath);
+      return $(xpath);
     }
   },
   dojos: {
     get: function () {
       var xpath = '//div[@class="profile-section"]/h3[a[@id="dojos"]]';
-      return browser.waitForVisible(xpath).$(xpath);
+      return $(xpath);
     }
   },
   email: {
-    get: function (name) {
+    get: function () {
       var path = 'button[title="email"]';
-      return browser.waitForVisible(path).$(path);
+      return $(path);
+    }
+  },
+  config: {
+    get: function () {
+      var selector = 'button#cd-dojo-action';
+      return browser.waitForVisible(selector)
+        .element(selector);
+    }
+  },
+  editUser: {
+    get: function () {
+      var selector = '//a[contains(@ui-sref, "edit-user-profile")]';
+      return browser.waitForVisible(selector)
+        .element(selector);
     }
   },
   open: {

@@ -1,55 +1,89 @@
 module.exports = {
   'full': {
-    //Belongs to same dojo
-    'champion1': ['name', 'badges', 'email', 'dojos'],
-    'child1': ['name', 'nick', 'badges', 'parents', 'dojos'],
-    'child2': ['name', 'nick', 'badges', 'parents', 'email', 'dojos'],
-    'parent1': ['name', 'children', 'badges', 'email', 'dojos'],
-    'mentor1': ['name', 'children', 'badges', 'email', 'dojos'],
-    //Out of dojo
-    // 'manager1': ['name', 'badges', 'email', 'dojos'],
+    //  Belongs to same dojo
+    'champion1': ['name', 'email', 'dojos'],
+    'child1': ['name', 'nick', 'parents', 'dojos'],
+    'child2': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'parent1': ['name', 'children', 'email', 'dojos'],
+    'mentor1': ['name', 'children', 'email', 'dojos'],
+
+    //  Out of dojo
+    'child3': [],
+    'parent2': []
+    // 'manager1': ['name', 'email', 'dojos'],
   },
+  // Should see info from its dojo org member
   'limited': {
-    'champion1': ['name', 'badges', 'email'],
-    'child1': ['name', 'nick', 'badges', 'parents'],
-    'child2': ['name', 'nick', 'badges', 'parents'],
-    'parent1': ['name', 'children', 'badges'],
-    'mentor1': ['name', 'children', 'badges'],
-
-    // 'manager1': ['name', 'badges', 'email', 'dojos']
-  },
-  'limited2': {
-    'champion1': ['name', 'badges', 'email'],
-    'child1': ['name', 'nick', 'badges', 'parents'],
-    'child2': ['name', 'nick', 'badges', 'parents', 'email'],
-    'parent1': ['name', 'children', 'badges', 'email'],
-    'mentor1': ['name', 'children', 'badges', 'email'],
-
-    // 'manager1': ['name', 'badges', 'email', 'dojos']
-  },
-  'limited3': {
-    'champion1': ['name', 'badges', 'email'],
-    'child1': ['name', 'nick', 'badges', 'parents'],
-    'child2': ['name', 'nick', 'badges', 'parents', 'email'],
-    'parent1': ['name', 'children', 'badges', 'email', 'dojos'],
-    'mentor1': ['name', 'badges'],
-
-    // 'manager1': ['name','badges', 'email', 'dojos']
-  },
-  'kidLimited': {
-    'champion1': ['name', 'badges'],
-    'child1': ['name', 'nick', 'badges', 'parents'],
-    'child2': ['name', 'nick', 'badges', 'parents'],
-    'parent1': ['name', 'badges', 'children'],
-
-    // 'manager1': ['name', 'badges', 'email', 'dojos']
-  },
-  'restricted': {
-    'champion1': ['name', 'badges'],
+    'champion1': ['name', 'dojos'],
     'child1': [],
     'child2': [],
     'parent1': [],
+    'mentor1': ['name', 'children'],
+    'parent3': ['name', 'children', 'dojos'],
+    // Public profiles
+    'child3-1': ['nick', 'dojos'],
+    'mentor3': ['name', 'children', 'dojos'],
 
-    // 'manager1': ['name', 'badges', 'email', 'dojos']
-  }
+    'child3': [],
+    'parent2': []
+
+    // 'manager1': ['name', 'email', 'dojos']
+  },
+  // Should see basic info from its dojo org member as well as its family
+  'limitedFamily': {
+    'champion1': ['name', 'dojos'],
+    'child1': ['name', 'nick', 'parents', 'dojos'],
+    'child2': ['name', 'nick', 'parents', 'dojos', 'email'],
+    'parent1': ['name', 'children', 'email', 'dojos'],
+    'mentor1': [],
+    'parent3': ['name', 'children', 'dojos'],
+
+    'child3-1': ['nick', 'dojos'],
+    'mentor3': ['name', 'children', 'dojos'],
+
+    'child3': [],
+    'parent2': []
+
+    // 'manager1': ['name', 'email', 'dojos']
+  },
+  'none': {
+    'champion1': [],
+    'child1': [],
+    'child2': [],
+    'parent1': [],
+    'mentor1': [],
+
+    'child3-1': ['nick', 'dojos'],
+    'mentor3': ['name', 'children', 'dojos'],
+
+    'child3': [],
+    'parent2': []
+  },
+  // Should see basic info from its dojo org member as well as its family
+  // 'kidLimited': {
+  //   'champion1': ['name', 'dojos'],
+  //   'child1': ['name', 'nick', 'parents', 'dojos'],
+  //   'child2': ['name', 'nick', 'parents', 'dojos'],
+  //   'parent1': ['name', 'children', 'dojos', 'email'],
+  //
+  //   'child3': [],
+  //   'parent2': []
+  //
+  //   // 'manager1': ['name', 'email', 'dojos']
+  // },
+  // Should see its own dojo members but not others dojo 's members
+  'otherDojo': {
+    'champion1': [],
+    'champion2': ['name', 'email', 'dojos'],
+    // We don't test child1&2 cause theyr also a part of the dojo
+
+    'parent3': ['name', 'children', 'dojos'],
+    'child3-1': ['nick', 'dojos'],
+    'mentor3': ['name', 'children', 'dojos'],
+
+    'child3': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'parent2': ['name', 'children', 'email', 'dojos'],
+
+    // 'manager1': ['name', 'email', 'dojos']
+  },
 };

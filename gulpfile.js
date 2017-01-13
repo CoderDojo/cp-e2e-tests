@@ -30,7 +30,7 @@ gulp.task('semistandard', function () {
 });
 
 var testsFailed = false;
-gulp.task('wdio', ['semistandard', 'clean'], function() {
+gulp.task('wdio', ['clean'], function() {
   return gulp.src('wdio.conf.js').pipe(webdriver(customWdioConfig))
   .on('error', function (err) {
     // We still want the report to generate if a test fails, so surpress the error
@@ -51,4 +51,4 @@ gulp.task('test', ['generate-report'], function () {
   }
 });
 
-gulp.task('default', ['test']);
+gulp.task('default', ['semistandard', 'test']);
