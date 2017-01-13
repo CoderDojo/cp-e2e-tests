@@ -90,13 +90,9 @@ describe('Test profile visibility', function () {
             return promiseSeries([
               handleCDF,
               () => MainPage.userMenu.waitForVisible(), // We wait here elsewhat we get redirected to homepage (test2fast2test)
-              () => {
-                console.log(urls[targetUser], targetUser);
-                return Promise.resolve();
-              },
               () => MainPage.open(urls[targetUser]),
               checkVisibleFields
-            ]).then(() => console.log('Finished'));
+            ]);
           });
         }
 
@@ -105,13 +101,9 @@ describe('Test profile visibility', function () {
             return promiseSeries([
               handleCDF,
               () => MainPage.userMenu.waitForVisible(), // We wait here elsewhat we get redirected to homepage (test2fast2test)
-              () => {
-                console.log(urls[targetUser], targetUser);
-                return Promise.resolve();
-              },
               () => MainPage.open(urls[targetUser]),
               checkNonVisibleFields
-            ]).then(() => console.log('Finished'));
+            ]);
           });
         }
         after(() => {
@@ -148,10 +140,6 @@ describe('Test profile visibility', function () {
         promisesVisibility.push(() => browser.waitForExist('.cd-profile'));
         promisesVisibility.push(() => page[field]);
         promisesVisibility.push((element) => browser.isVisible(element.selector));
-        promisesVisibility.push((visibility) => {
-          console.log(visibility, 'expected true on', field)
-          return Promise.resolve(visibility);
-        });
         promisesVisibility.push((visible) => expect(visible).to.be.true);
       });
       return promiseSeries(promisesVisibility);
@@ -159,12 +147,9 @@ describe('Test profile visibility', function () {
     var checkNonVisibleFields = () => {
       var promisesInvisibility = [];
       nonVisibleFields.forEach((field) => {
+        promisesInvisibility.push(() => browser.waitForExist('.cd-profile'));
         promisesInvisibility.push(() => page[field]);
         promisesInvisibility.push((element) => browser.isVisible(element.selector));
-        promisesInvisibility.push((visibility) => {
-          console.log(visibility, 'expected false on ', field)
-          return Promise.resolve(visibility);
-        });
         promisesInvisibility.push((visible) => expect(visible).to.be.false);
       });
       return promiseSeries(promisesInvisibility);

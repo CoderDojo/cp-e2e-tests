@@ -4,7 +4,6 @@ var Profile = Object.create(Page, {
   private: {
     get: function () {
       var selector = '//*[contains(@class, "form-group") and div/input[@id="privateProfile-yes"] and div/input[@id="privateProfile-no"]]';
-      // var selector = 'input[name="privateProfile"]';
       return $(selector);
     }
   },
