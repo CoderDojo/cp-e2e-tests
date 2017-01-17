@@ -51,7 +51,7 @@ var RegisterPage = Object.create(Page, {
   },
   selectDateOfBirth: {
     value: function (date) {
-      return browser.selectDate('dateOfBirth', date);
+      return browser.selectDate('dateOfBirth', date, true);
     }
   },
   selectCountry: {

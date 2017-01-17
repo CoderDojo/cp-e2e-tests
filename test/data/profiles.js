@@ -82,8 +82,8 @@ module.exports = {
     'mentor3': ['name', 'children', 'dojos'],
 
     'child3': ['name', 'nick', 'parents', 'email', 'dojos'],
-    'parent2': ['name', 'children', 'email', 'dojos'],
+    'parent2': ['name', 'children', 'email', 'dojos']
 
     // 'manager1': ['name', 'email', 'dojos']
-  },
+  }
 };

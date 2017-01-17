@@ -43,10 +43,8 @@ describe('Test profile visibility', function () {
           () => browser.pause(2000),
           () => page.private,
           (privateElement) => {
-            console.log('el',privateElement);
             return browser.elementIdLocation(privateElement.value.ELEMENT)
             .then((loc) => {
-              console.log('pos', loc.value.x, loc.value.y);
               browser.scroll(loc.value.x, loc.value.y);
             })
             .then(() => Promise.resolve(privateElement));

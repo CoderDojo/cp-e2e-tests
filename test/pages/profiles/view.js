@@ -25,6 +25,11 @@ var Profile = Object.create(Page, {
       return $(xpath);
     }
   },
+  childrenList: {
+    get: function () {
+      return $('//div[@class="profile-section" and div/h3[a[@id="youths"]]]//a[contains(@class, "cd-picture-grid__item")]');
+    },
+  },
   parents: {
     get: function () {
       var xpath = '//h3[a[@id="parents"]]';
