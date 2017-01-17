@@ -7,7 +7,6 @@ var _ = require('lodash');
 describe('Test profile visibility', function () {
   this.timeout(120000);
   Object.keys(login).forEach(function (loggedInUser) {
-
     describe('Test profile visibility for ' + loggedInUser, function () {
       beforeEach(() => {
         var email = loggedInUser + '@example.com';

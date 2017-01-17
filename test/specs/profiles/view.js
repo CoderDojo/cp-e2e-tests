@@ -1,4 +1,3 @@
-var page = require('../../pages/profiles/edit.js');
 var profilePage = require('../../pages/profiles/view.js');
 var MainPage = require('../../pages/page');
 var login = require('../../data/users.js');
@@ -7,7 +6,6 @@ var _ = require('lodash');
 describe('Test profile visibility', function () {
   this.timeout(120000);
   Object.keys(login).forEach(function (loggedInUser) {
-
     describe('Test profile actions for ' + loggedInUser, function () {
       before(() => {
         return logIn(loggedInUser);
@@ -36,7 +34,7 @@ describe('Test profile visibility', function () {
                   var refName;
                   return promiseSeries([
                     () => profilePage.name,
-                    (name) => {refName = name; return Promise.resolve();},
+                    (name) => { refName = name; return Promise.resolve(); },
                     () => browser.elementIdClick(element.ELEMENT),
                     () => browser.waitUntil(() => {
                       return profilePage.name
@@ -46,7 +44,7 @@ describe('Test profile visibility', function () {
                       });
                     }), // I know, it's terrible
                     () => isWheelVisible(),
-                    () => browser.back(),
+                    () => browser.back()
                   ]);
                 });
               });
@@ -95,5 +93,4 @@ describe('Test profile visibility', function () {
       (visible) => expect(visible).to.be.true
     ]);
   };
-
 });

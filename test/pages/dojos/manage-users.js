@@ -12,7 +12,7 @@ var DojoUsers = Object.create(Page, {
         return browser.elements(path);
       });
     }
-   },
+  },
   profileLink: {
     get: function () {
       var xpath = '//span[@class="cd-action-bar__actions"]//cd-action-bar-item[contains(@ng-show, "viewProfile")]/a';

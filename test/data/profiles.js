@@ -59,18 +59,6 @@ module.exports = {
     'child3': [],
     'parent2': []
   },
-  // Should see basic info from its dojo org member as well as its family
-  // 'kidLimited': {
-  //   'champion1': ['name', 'dojos'],
-  //   'child1': ['name', 'nick', 'parents', 'dojos'],
-  //   'child2': ['name', 'nick', 'parents', 'dojos'],
-  //   'parent1': ['name', 'children', 'dojos', 'email'],
-  //
-  //   'child3': [],
-  //   'parent2': []
-  //
-  //   // 'manager1': ['name', 'email', 'dojos']
-  // },
   // Should see its own dojo members but not others dojo 's members
   'otherDojo': {
     'champion1': [],
