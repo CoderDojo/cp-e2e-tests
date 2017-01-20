@@ -27,7 +27,7 @@ var Profile = Object.create(Page, {
   },
   childrenList: {
     get: function () {
-      return $('//div[@class="profile-section" and div/h3[a[@id="youths"]]]//a[contains(@class, "cd-picture-grid__item")]');
+      return $$('//div[@class="profile-section" and div/h3[a[@id="youths"]]]//a[contains(@class, "cd-picture-grid__item")]');
     }
   },
   parents: {
@@ -48,7 +48,7 @@ var Profile = Object.create(Page, {
       return $(path);
     }
   },
-  config: {
+  userActions: {
     get: function () {
       var selector = 'button#cd-dojo-action';
       return browser.waitForVisible(selector)

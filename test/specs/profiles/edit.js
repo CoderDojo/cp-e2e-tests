@@ -22,7 +22,7 @@ describe('Test profile visibility', function () {
           () => MainPage.userMenu.waitForVisible(),
           () => MainPage.userMenu.click(),
           () => MainPage.userMenu_myProfile.click(),
-          () => profilePage.config.click(),
+          () => profilePage.userActions.click(),
           () => profilePage.editUser.click()
         ]);
       });

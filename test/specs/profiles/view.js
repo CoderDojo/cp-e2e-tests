@@ -17,6 +17,8 @@ describe('Test profile visibility', function () {
       it('should be able to see the actions wheel', () => {
         return promiseSeries([
           () => browser.pause(2000),
+          () => MainPage.userMenu.waitForVisible(),
+          () => MainPage.userMenu.click(),
           () => MainPage.userMenu_myProfile.click(),
           () => isWheelVisible()
         ]);
@@ -26,7 +28,6 @@ describe('Test profile visibility', function () {
         it('should be able to see kids actions wheel', () => {
           return promiseSeries([
             () => profilePage.childrenList,
-            (element) => browser.elements(element.selector),
             (kids) => {
               var promises = [];
               kids.value.forEach((element) => {
@@ -34,12 +35,11 @@ describe('Test profile visibility', function () {
                   var refName;
                   return promiseSeries([
                     () => profilePage.name,
-                    (name) => { refName = name; return Promise.resolve(); },
+                    (name) => { refName = name; },
                     () => browser.elementIdClick(element.ELEMENT),
                     () => browser.waitUntil(() => {
                       return profilePage.name
                       .then((name) => {
-                        console.log(name, refName, !_.isEqual(name.value, refName.value));
                         return !_.isEqual(name.value, refName.value);
                       });
                     }), // I know, it's terrible
@@ -58,7 +58,6 @@ describe('Test profile visibility', function () {
   });
 
   var logIn = (loggedInUser) => {
-    console.log(loggedInUser);
     var email = loggedInUser + '@example.com';
     var password = 'test' + loggedInUser;
     var user = _.find(login, {'name': loggedInUser});
@@ -68,9 +67,7 @@ describe('Test profile visibility', function () {
     }
     return promiseSeries([
       () => MainPage.open(), // TODO: fix menu z-index, "temp" bypass menu issue
-      () => MainPage.login(email, password),
-      () => MainPage.userMenu.waitForVisible(),
-      () => MainPage.userMenu.click()
+      () => MainPage.login(email, password)
     ]);
   };
 
@@ -84,10 +81,10 @@ describe('Test profile visibility', function () {
     ]);
   };
 
-  // WEEEEEHL
+  // WHEEEEEL ./°
   var isWheelVisible = () => {
     return promiseSeries([
-      () => profilePage.config.click(),
+      () => profilePage.userActions.click(),
       () => profilePage.editUser,
       (element) => browser.isVisible(element.selector),
       (visible) => expect(visible).to.be.true
