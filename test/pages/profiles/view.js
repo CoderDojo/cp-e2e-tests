@@ -25,9 +25,15 @@ var Profile = Object.create(Page, {
       return $(xpath);
     }
   },
+  child: {
+    value: function (name) {
+      var xpath = '//div[@class="profile-section" and div/h3[a[@id="youths"]]]//a[contains(@class, "cd-picture-grid__item")]//p[contains(@class, cd-picture-grid__caption) and contains(text(), "' + name + '")]';
+      return $(xpath);
+    }
+  },
   childrenList: {
     get: function () {
-      return $$('//div[@class="profile-section" and div/h3[a[@id="youths"]]]//a[contains(@class, "cd-picture-grid__item")]');
+      return browser.elements('//div[@class="profile-section" and div/h3[a[@id="youths"]]]//a[contains(@class, "cd-picture-grid__item")]');
     }
   },
   parents: {

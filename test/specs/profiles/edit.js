@@ -4,10 +4,10 @@ var MainPage = require('../../pages/page');
 var login = require('../../data/users.js');
 var _ = require('lodash');
 
-describe('Test profile visibility', function () {
+describe('Test profile edit', function () {
   this.timeout(120000);
   Object.keys(login).forEach(function (loggedInUser) {
-    describe('Test profile visibility for ' + loggedInUser, function () {
+    describe('Test profile edit for ' + loggedInUser, function () {
       beforeEach(() => {
         var email = loggedInUser + '@example.com';
         var password = 'test' + loggedInUser;

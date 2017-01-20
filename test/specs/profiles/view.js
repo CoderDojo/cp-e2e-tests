@@ -26,17 +26,26 @@ describe('Test profile visibility', function () {
 
       if (_.includes(['parent1', 'parent2'], loggedInUser)) {
         it('should be able to see kids actions wheel', () => {
+          var names = [];
           return promiseSeries([
             () => profilePage.childrenList,
             (kids) => {
               var promises = [];
               kids.value.forEach((element) => {
+                promises.push(() => browser.elementIdText(element.ELEMENT));
+                promises.push((name) => names.push(name.value));
+              });
+              return promiseSeries(promises);
+            },
+            () => {
+              var promises = [];
+              names.forEach((childName) => {
                 promises.push(() => {
                   var refName;
                   return promiseSeries([
                     () => profilePage.name,
                     (name) => { refName = name; },
-                    () => browser.elementIdClick(element.ELEMENT),
+                    () => profilePage.child(childName).click(),
                     () => browser.waitUntil(() => {
                       return profilePage.name
                       .then((name) => {
@@ -44,7 +53,9 @@ describe('Test profile visibility', function () {
                       });
                     }), // I know, it's terrible
                     () => isWheelVisible(),
-                    () => browser.back()
+                    () => MainPage.userMenu.click(),
+                    () => MainPage.userMenu_myProfile.click(),
+                    () => profilePage.children.waitForVisible()
                   ]);
                 });
               });
