@@ -1,4 +1,9 @@
 module.exports = {
+  manager1: {
+    email: 'manager1@example.com',
+    password: 'Manager1@Zen', // Must be in this format, it's a cdf account and hence more restricted
+    name: 'manager1'
+  },
   champion1: {
     email: 'champion1@example.com',
     password: 'testchampion1',

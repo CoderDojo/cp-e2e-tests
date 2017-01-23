@@ -2,7 +2,8 @@ function Page () {}
 
 Page.prototype.open = function (path) {
   path = path || '';
-  return browser.url('/' + path)
+  path = path.indexOf('http') > -1 ? path : '/' + path;
+  return browser.url(path)
     .setCookie({name: 'NG_TRANSLATE_LANG_KEY', value: '"en_US"'})
     .setCookie({name: 'cookieDisclaimer', value: '"confirmed"'});
 };
