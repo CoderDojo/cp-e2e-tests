@@ -6,7 +6,7 @@ var RegisterPage = Object.create(Page, {
    */
   firstName: {
     get: function () {
-      return browser.element('input[name="fullName"]');
+      return browser.element('input[name="firstName"]');
     }
   },
   surname: {

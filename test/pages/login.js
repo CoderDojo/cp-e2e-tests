@@ -19,6 +19,11 @@ var LoginPage = Object.create(Page, {
       return $('input[type="submit"]');
     }
   },
+  resetLink: {
+    get: function () {
+      return $('a[href="/reset"]');
+    }
+  },
   open: {
     value: function () {
       return Page.open.call(this, 'login');

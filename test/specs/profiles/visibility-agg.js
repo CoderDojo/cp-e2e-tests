@@ -12,24 +12,24 @@ describe('Test profile visibility', function () {
 
   var fields = ['name', 'email', 'dojos']; // Fields not listed here doest not necessarly display
   var tests = {
-    'manager1': profiles.cdf, // CDF admin
+    'manager one': profiles.cdf, // CDF admin
 
-    'champion1': profiles.full,
-    'child2-1': profiles.full, // kid champ
-    'mentor1': profiles.limited,
-    'mentorTicketing1': profiles.full,
-    'mentorAdmin1': profiles.full,
-    'mentorFullAccess1': profiles.full,
-    'parent1': profiles.limitedFamily,
-    'parentTicketing1': profiles.full,
-    'parentAdmin1': profiles.full,
-    'parentFullAccess1': profiles.full,
-    'child2': profiles.limitedFamily,
+    'champion one': profiles.full,
+    'child2-1 of parent1': profiles.full, // kid champ
+    'mentor one': profiles.limited,
+    'mentorTicketing one': profiles.full,
+    'mentorAdmin one': profiles.full,
+    'mentorFullAccess one': profiles.full,
+    'parent one': profiles.limitedFamily,
+    'parentTicketing one': profiles.full,
+    'parentAdmin one': profiles.full,
+    'parentFullAccess one': profiles.full,
+    'child2 of parent1': profiles.limitedFamily,
 
     // Other Dojo
-    'randomParent1': profiles.outsider,
-    'champion2': profiles.otherDojo,
-    'parent2': profiles.otherDojoLimitedFamily
+    'randomParent one': profiles.outsider,
+    'champion two': profiles.otherDojo,
+    'parent two': profiles.otherDojoLimitedFamily
   };
   var urls = {};
 
@@ -74,11 +74,12 @@ describe('Test profile visibility', function () {
     function getIndependantUsers (users) {
       var promises = [];
       users.forEach((user) => {
+        console.log('user', user);
         promises.push(() => login(user));
         promises.push(() => MainPage.userMenu.click());
         promises.push(() => MainPage.userMenu_myProfile.click());
         promises.push(() => browser.getUrl());
-        promises.push((url) => urls[user] = url);
+        promises.push((url) => { urls[user] = url; });
         promises.push(() => logout());
       });
       return promiseSeries(promises);
@@ -87,7 +88,7 @@ describe('Test profile visibility', function () {
     return promiseSeries([
       () => getDojoUsers('dojo1'),
       () => getDojoUsers('dojo2'),
-      () => getIndependantUsers(['randomParent1', 'mentor2', 'manager1'])
+      () => getIndependantUsers(['randomParent one', 'mentor two', 'manager one'])
     ]);
   });
 
@@ -99,7 +100,7 @@ describe('Test profile visibility', function () {
       before(() => {
         return promiseSeries([
           () => login(loggedInUser),
-          () => MainPage.userMenu.waitForVisible(), // We wait here elsewhat we get redirected to homepage (test2fast2test)
+          () => MainPage.userMenu.waitForVisible() // We wait here elsewhat we get redirected to homepage (test2fast2test)
         ]);
       });
       after(() => {
@@ -109,7 +110,7 @@ describe('Test profile visibility', function () {
         var visibleFields = targets[targetUser];
         var nonVisibleFields = _.difference(fields, visibleFields);
         describe(loggedInUser + ' visibility test against ' + targetUser, () => {
-          before(() =>{
+          before(() => {
             return MainPage.open(urls[targetUser]);
           });
           if (visibleFields.length > 0) {
@@ -129,6 +130,7 @@ describe('Test profile visibility', function () {
           var promisesVisibility = [];
           visibleFields.forEach((field) => {
             promisesVisibility.push(() => browser.waitForExist('.cd-profile'));
+            promisesVisibility.push(() => page[field].waitForVisible());
             promisesVisibility.push(() => page[field]);
             promisesVisibility.push((element) => browser.isVisible(element.selector));
             promisesVisibility.push((visible) => expect(visible).to.be.true);
@@ -165,6 +167,7 @@ describe('Test profile visibility', function () {
       email = user.email;
       password = user.password;
     }
+    console.log('password', password);
     return MainPage.login(email, password);
   };
 });

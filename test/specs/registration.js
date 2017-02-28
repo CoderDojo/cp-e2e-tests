@@ -9,6 +9,7 @@ describe('Registration tests', function () {
     country: 'Ireland',
     place: 'Dublin'
   };
+  baseProfile.name = baseProfile.firstName + ' ' + baseProfile.surname;
 
   afterEach(function () {
     return browser.deleteCookie();
@@ -40,7 +41,7 @@ describe('Registration tests', function () {
       })),
       () => browser.waitForVisible('.cd-menu__profile-name'),
       () => browser.getText('.cd-menu__profile-name'),
-      (profileName) => expect(profileName).to.include(baseProfile.firstName),
+      (profileName) => expect(profileName).to.include(baseProfile.name),
       () => browser.getLoggedInUserInstance(),
       (userInstance) => expect(JSON.parse(userInstance.value.user.initUserType).name).to.equal('parent-guardian')
     ]);
@@ -57,7 +58,7 @@ describe('Registration tests', function () {
       })),
       () => browser.waitForVisible('.cd-menu__profile-name'),
       () => browser.getText('.cd-menu__profile-name'),
-      (profileName) => expect(profileName).to.include(baseProfile.firstName),
+      (profileName) => expect(profileName).to.include(baseProfile.name),
       () => browser.getLoggedInUserInstance(),
       (userInstance) => expect(JSON.parse(userInstance.value.user.initUserType).name).to.equal('attendee-o13')
     ]);
