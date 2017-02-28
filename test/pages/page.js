@@ -52,6 +52,12 @@ module.exports = Object.create(new Page(), {
       return $('//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "My Events")]');
     }
   },
+  userMenu_myChildren: {
+    get: function () {
+      var selector = '//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "My Children")]';
+      return browser.waitForVisible(selector).element(selector);
+    }
+  },
   userMenu_elearning: {
     get: function () {
       return $('//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "E-learning")]');

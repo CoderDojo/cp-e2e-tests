@@ -13,9 +13,20 @@ browser.addCommand('selectDate', function (name, date, floating) {
     return '/following-sibling::div[@uib-datepicker-popup-wrap]//table[contains(@class, "' + path + '")]';
   };
   return promiseSeries([
+    () => browser.waitForVisible(baseXPath(true) + '/following-sibling::span[@class="input-group-btn"]'),
     () => browser.click(baseXPath(true) + '/following-sibling::span[@class="input-group-btn"]'),
-    () => browser.click(baseXPath() + midXPath('uib-daypicker') + '//button[contains(@class, "uib-title")]'),
-    () => browser.click(baseXPath() + midXPath('uib-monthpicker') + '//button[contains(@class, "uib-title")]'),
+    () => browser.isVisible(baseXPath() + midXPath('uib-daypicker') + '//button[contains(@class, "uib-title")]'),
+    (dayPickerTitleVisible) => {
+      if (dayPickerTitleVisible) {
+        return browser.click(baseXPath() + midXPath('uib-daypicker') + '//button[contains(@class, "uib-title")]');
+      }
+    },
+    () => browser.isVisible(baseXPath() + midXPath('uib-monthpicker') + '//button[contains(@class, "uib-title")]'),
+    (monthPickerTitleVisible) => {
+      if (monthPickerTitleVisible) {
+        return browser.click(baseXPath() + midXPath('uib-monthpicker') + '//button[contains(@class, "uib-title")]');
+      }
+    },
     () => browser.getText(baseXPath() + midXPath('uib-yearpicker') + '//button[contains(@class, "uib-title")]/strong'),
     (text) => {
       var subSteps = [];

@@ -10,148 +10,148 @@ module.exports = {
   // Anyone having right inside a dojo (ticketingA/DojoA(/champ))
   'cdf': {
     //  Belongs to same dojo
-    'champion1': ['name', 'email', 'dojos'],
-    'child1': ['name', 'nick', 'parents', 'dojos'],
-    'child2': ['name', 'nick', 'parents', 'email', 'dojos'],
-    'child2-1': ['name', 'nick', 'parents', 'email', 'dojos'],
-    'parent1': ['name', 'children', 'email', 'dojos'],
-    'mentor1': ['name', 'email', 'dojos'],
+    'champion one': ['name', 'email', 'dojos'],
+    'child1 of parent1': ['name', 'nick', 'parents', 'dojos'],
+    'child2 of parent1': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'child2-1 of parent1': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'parent one': ['name', 'children', 'email', 'dojos'],
+    'mentor one': ['name', 'email', 'dojos'],
     // Public profiles but they are also part of the dojo
-    'parent3': ['name', 'children', 'email', 'dojos'],
-    'child3-1': ['name', 'nick', 'email', 'dojos'],
-    'mentor3': ['name', 'email', 'dojos'],
+    'parent three': ['name', 'children', 'email', 'dojos'],
+    'child3-1 of parent3': ['name', 'nick', 'email', 'dojos'],
+    'mentor three': ['name', 'email', 'dojos'],
     //  Out of dojo
-    'randomParent1': ['name', 'email'],
+    'randomParent one': ['name', 'email'],
     // Other Dojo
-    'child3': ['name', 'nick', 'dojos', 'parents', 'email'],
-    'parent2': ['name', 'children', 'dojos', 'email']
+    'child3 of parent2': ['name', 'nick', 'dojos', 'parents', 'email'],
+    'parent two': ['name', 'children', 'dojos', 'email']
   },
 
   // Anyone having right inside a dojo (ticketingA/DojoA(/champ))
   'full': {
     //  Belongs to same dojo
-    'champion1': ['name', 'email', 'dojos'],
-    'child1': ['name', 'nick', 'parents', 'dojos'],
-    'child2': ['name', 'nick', 'parents', 'email', 'dojos'],
-    'child2-1': ['name', 'nick', 'parents', 'email', 'dojos'],
-    'parent1': ['name', 'children', 'email', 'dojos'],
-    'mentor1': ['name', 'email', 'dojos'],
+    'champion one': ['name', 'email', 'dojos'],
+    'child1 of parent1': ['name', 'nick', 'parents', 'dojos'],
+    'child2 of parent1': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'child2-1 of parent1': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'parent one': ['name', 'children', 'email', 'dojos'],
+    'mentor one': ['name', 'email', 'dojos'],
     // Public profiles but they are also part of the dojo
-    'parent3': ['name', 'children', 'email', 'dojos'],
-    'child3-1': ['name', 'nick', 'email', 'dojos'],
-    'mentor3': ['name', 'email', 'dojos'],
+    'parent three': ['name', 'children', 'email', 'dojos'],
+    'child3-1 of parent3': ['name', 'nick', 'email', 'dojos'],
+    'mentor three': ['name', 'email', 'dojos'],
     //  Out of dojo
-    'randomParent1': [],
+    'randomParent one': [],
     // Other Dojo
-    'child3': [],
-    'parent2': []
+    'child3 of parent2': [],
+    'parent two': []
   },
 
   // Should see info from its dojo org member
   'limited': {
     //  Belongs to same dojo
-    'champion1': ['name', 'dojos'],
-    'child2-1': [],
-    'child1': [],
-    'child2': [],
-    'parent1': [],
-    'mentor1': ['name', 'children'],
+    'champion one': ['name', 'dojos'],
+    'child2-1 of parent1': [],
+    'child1 of parent1': [],
+    'child2 of parent1': [],
+    'parent one': [],
+    'mentor one': ['name', 'children'],
     // Public profiles
-    'parent3': ['name', 'children', 'dojos'],
-    'child3-1': ['nick', 'dojos'],
-    'mentor3': ['name', 'dojos'],
+    'parent three': ['name', 'children', 'dojos'],
+    'child3-1 of parent3': ['nick', 'dojos'],
+    'mentor three': ['name', 'dojos'],
 
     //  Out of dojo
-    'randomParent1': [],
+    'randomParent one': [],
     // Other Dojo
-    'child3': [],
-    'parent2': []
+    'child3 of parent2': [],
+    'parent two': []
   },
 
   // Should see basic info from its dojo org member as well as its family
   'limitedFamily': {
     // Belongs to same dojo
-    'champion1': ['name', 'dojos'],
-    'child1': ['name', 'nick', 'parents', 'dojos'],
-    'child2': ['name', 'nick', 'parents', 'dojos', 'email'],
-    'child2-1': ['name', 'nick', 'parents', 'dojos', 'email'],
-    'parent1': ['name', 'children', 'email', 'dojos'],
-    'mentor1': [],
+    'champion one': ['name', 'dojos'],
+    'child1 of parent1': ['name', 'nick', 'parents', 'dojos'],
+    'child2 of parent1': ['name', 'nick', 'parents', 'dojos', 'email'],
+    'child2-1 of parent1': ['name', 'nick', 'parents', 'dojos', 'email'],
+    'parent one': ['name', 'children', 'email', 'dojos'],
+    'mentor one': [],
     // Public profiles
-    'parent3': ['name', 'children', 'dojos'],
-    'child3-1': ['nick', 'dojos'],
-    'mentor3': ['name', 'dojos'],
+    'parent three': ['name', 'children', 'dojos'],
+    'child3-1 of parent3': ['nick', 'dojos'],
+    'mentor three': ['name', 'dojos'],
 
     //  Out of dojo
-    'randomParent1': [],
+    'randomParent one': [],
     // Other Dojo
-    'child3': [],
-    'parent2': []
+    'child3 of parent2': [],
+    'parent two': []
   },
 
   'outsider': {
     // Out of Dojo
-    'champion1': [],
-    'child1': [],
-    'child2': [],
-    'child2-1': [],
-    'parent1': [],
-    'mentor1': [],
-    'child3': [],
-    'parent2': [],
+    'champion one': [],
+    'child1 of parent1': [],
+    'child2 of parent1': [],
+    'child2-1 of parent1': [],
+    'parent one': [],
+    'mentor one': [],
+    'child3 of parent2': [],
+    'parent two': [],
 
     // Public profiles
-    'parent3': ['name', 'children', 'dojos'],
-    'child3-1': ['nick', 'dojos'],
-    'mentor3': ['name', 'dojos'],
+    'parent three': ['name', 'children', 'dojos'],
+    'child3-1 of parent3': ['nick', 'dojos'],
+    'mentor three': ['name', 'dojos']
   },
   // Should see its own dojo members but not others dojo 's members
   'otherDojo': {
     // Belongs to Dojo
-    'champion2': ['name', 'email', 'dojos'],
-    'parent2': ['name', 'children', 'email', 'dojos'],
-    'child3': ['name', 'nick', 'parents', 'email', 'dojos'],
-    'mentor2': ['name', 'email'], // unapproved but still available
-    'parent1': ['name', 'children', 'email', 'dojos'],
-    'child1': ['name', 'parents', 'dojos'],
-    'child2': ['name', 'parents', 'email', 'dojos'],
+    'champion two': ['name', 'email', 'dojos'],
+    'parent two': ['name', 'children', 'email', 'dojos'],
+    'child3 of parent2': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'mentor two': ['name', 'email'], // unapproved but still available
+    'parent one': ['name', 'children', 'email', 'dojos'],
+    'child1 of parent1': ['name', 'parents', 'dojos'],
+    'child2 of parent1': ['name', 'parents', 'email', 'dojos'],
     // Public profiles
-    'parent3': ['name', 'children', 'dojos'],
-    'child3-1': ['nick', 'dojos'],
-    'mentor3': ['name', 'dojos'],
+    'parent three': ['name', 'children', 'dojos'],
+    'child3-1 of parent3': ['nick', 'dojos'],
+    'mentor three': ['name', 'dojos'],
 
     // Other Dojo
-    'champion1': ['name', 'email', 'dojos'], // unapproved but still available
-    'mentorAdmin1': [],
-    'mentorTicketing1': [],
-    'mentorFullAccess1': [],
-    'parentAdmin1': [],
-    'parentTicketing1': [],
-    'parentFullAccess1': [],
-    'mentor1': []
+    'champion one': ['name', 'email', 'dojos'], // unapproved but still available
+    'mentorAdmin one': [],
+    'mentorTicketing one': [],
+    'mentorFullAccess one': [],
+    'parentAdmin one': [],
+    'parentTicketing one': [],
+    'parentFullAccess one': [],
+    'mentor one': []
   },
   'otherDojoLimitedFamily': {
     // Belongs to Dojo
-    'champion2': ['name', 'dojos'],
-    'parent2': ['name', 'children', 'email', 'dojos'],
-    'child3': ['name', 'nick', 'parents', 'email', 'dojos'],
-    'mentor2': [],
-    'parent1': [],
-    'child1': [],
-    'child2': [],
+    'champion two': ['name', 'dojos'],
+    'parent two': ['name', 'children', 'email', 'dojos'],
+    'child3 of parent2': ['name', 'nick', 'parents', 'email', 'dojos'],
+    'mentor two': [],
+    'parent one': [],
+    'child1 of parent1': [],
+    'child2 of parent1': [],
     // Public profiles
-    'parent3': ['name', 'children', 'dojos'],
-    'child3-1': ['nick', 'dojos'],
-    'mentor3': ['name', 'dojos'],
+    'parent three': ['name', 'children', 'dojos'],
+    'child3-1 of parent3': ['nick', 'dojos'],
+    'mentor three': ['name', 'dojos'],
 
     // Other Dojo
-    'champion1': [],
-    'mentorAdmin1': [],
-    'mentorTicketing1': [],
-    'mentorFullAccess1': [],
-    'parentAdmin1': [],
-    'parentTicketing1': [],
-    'parentFullAccess1': [],
-    'mentor1': []
+    'champion one': [],
+    'mentorAdmin one': [],
+    'mentorTicketing one': [],
+    'mentorFullAccess one': [],
+    'parentAdmin one': [],
+    'parentTicketing one': [],
+    'parentFullAccess one': [],
+    'mentor one': []
   }
 };
