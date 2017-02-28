@@ -140,7 +140,7 @@ describe('Creating a Future One-off Event', function () {
       () => MyEventsPage.getEventDate(eventDetails.name).getText(),
       (date) => expect(date).to.equal(expectedDate),
       () => MyEventsPage.getEventType(eventDetails.name).getText(),
-      (eventType) => expect(eventType).to.equal('one-off'),
+      (eventType) => expect(eventType).to.equal('One off'),
       () => {
         var subSteps = [];
         eventDetails.sessions.forEach(function (session) {
