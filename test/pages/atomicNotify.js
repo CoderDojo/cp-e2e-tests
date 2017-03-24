@@ -1,6 +1,6 @@
 var Page = require('./page');
 
-var MyDojosPage = Object.create(Page, {
+var AtomicNotify = Object.create(Page, {
   /**
    * define elements
    */
@@ -20,4 +20,4 @@ var MyDojosPage = Object.create(Page, {
   }
 });
 
-module.exports = MyDojosPage;
+module.exports = AtomicNotify;
