@@ -27,7 +27,7 @@ describe('Management of pending users', function () {
     return promiseSeries([
       () => ManageUsersPage.users,
       (users) => (size = users.value.length),
-      () => ManageUsersPage.user('userRequestingAccess1').click(),
+      () => ManageUsersPage.user('userRequestingAccess one').click(),
       () => ManageUsersPage.declineJoinRequest.click(),
       () => AtomicNotify.get.getText(),
       (msg) => expect(msg).to.contain('declined'),
@@ -47,7 +47,7 @@ describe('Management of pending users', function () {
       () => ManageUsersPage.getPendingUsers.click(),
       () => ManageUsersPage.users,
       (users) => (size = users.value.length),
-      () => ManageUsersPage.user('userRequestingAccess2').click(),
+      () => ManageUsersPage.user('userRequestingAccess two').click(),
       () => ManageUsersPage.acceptJoinRequest.click(),
       () => AtomicNotify.get.getText(),
       (msg) => expect(msg).to.contain('accepted'),
@@ -55,7 +55,7 @@ describe('Management of pending users', function () {
       () => ManageUsersPage.users,
       (users) => expect(users.value.length).to.be.equal(size - 1),
       () => ManageUsersPage.getActiveUsers.click(),
-      () => ManageUsersPage.user('userRequestingAccess2'),
+      () => ManageUsersPage.user('userRequestingAccess two'),
       (user) => expect(user).to.exist
     ]);
   });
