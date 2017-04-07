@@ -1,43 +1,38 @@
 var Page = require('./page');
 
-function getDojoRow (name) {
-  var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]';
-  return browser.waitForVisible(xpath)
-    .element(xpath);
+function getDojoCard (name) {
+  var selector = 'cd-expanding-card[main-title="' + name + '"]';
+  return browser.waitForVisible(selector)
+    .element(selector);
 }
 
 var MyDojosPage = Object.create(Page, {
   /**
    * define elements
    */
-  getDojoRow: {
+  getDojoCard: {
     value: function (name) {
-      return getDojoRow(name);
+      return getDojoCard(name);
     }
   },
   getListingLink: {
     value: function (name) {
-      return getDojoRow(name).$('a[ui-sref^="dojo-detail"][ng-bind-html="myDojo.name"]');
+      return getDojoCard(name).$('a[ui-sref^="dojo-detail"]');
     }
   },
   getManageUsersLink: {
     value: function (name) {
-      return getDojoRow(name).$('a[ui-sref^="manage-dojo-users"]');
+      return getDojoCard(name).$('a[ui-sref^="manage-dojo-users"]');
     }
   },
   getManageEventsLink: {
     value: function (name) {
-      return getDojoRow(name).$('a[ui-sref^="manage-dojo-events"]');
-    }
-  },
-  getListingViewLink: {
-    value: function (name) {
-      return getDojoRow(name).$('//a[starts-with(@ui-sref, "dojo-detail") and not(text()="' + name + '")]');
+      return getDojoCard(name).$('a[ui-sref^="manage-dojo-events"]');
     }
   },
   getEditLink: {
     value: function (name) {
-      return getDojoRow(name).$('a[ui-sref^="edit-dojo"]');
+      return getDojoCard(name).$('a[ui-sref^="edit-dojo"]');
     }
   },
   open: {
