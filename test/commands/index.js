@@ -6,7 +6,8 @@ var commands = [
   'register',
   'selectDate',
   'selectTime',
-  'uiSelectFilterAndSelect'
+  'uiSelectFilterAndSelect',
+  'toggleProfileMenu'
 ];
 
 commands.forEach(function (command) {
