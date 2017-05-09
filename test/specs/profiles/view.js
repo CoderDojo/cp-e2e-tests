@@ -18,9 +18,7 @@ describe('Test profile visibility', function () {
 
         it('should be able to see the actions wheel', () => {
           return promiseSeries([
-            () => browser.pause(2000),
-            () => MainPage.userMenu.waitForVisible(),
-            () => MainPage.userMenu.click(),
+            () => browser.toggleProfileMenu(),
             () => MainPage.userMenu_myProfile.click(),
             () => isWheelVisible()
           ]);
@@ -55,7 +53,7 @@ describe('Test profile visibility', function () {
                         });
                       }), // I know, it's terrible
                       () => isWheelVisible(),
-                      () => MainPage.userMenu.click(),
+                      () => browser.toggleProfileMenu(),
                       () => MainPage.userMenu_myProfile.click(),
                       () => profilePage.children.waitForVisible()
                     ]);
@@ -93,6 +91,7 @@ describe('Test profile visibility', function () {
   // WHEEEEEL ./°
   var isWheelVisible = () => {
     return promiseSeries([
+      () => profilePage.userActions.waitForVisible(),
       () => profilePage.userActions.click(),
       () => profilePage.editUser,
       (element) => browser.isVisible(element.selector),
