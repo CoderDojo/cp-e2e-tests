@@ -55,9 +55,7 @@ var ManageApplicationsPage = Object.create(Page, {
   deleteApplicationButton: {
     get: function () {
       var xpath = '//td//button[not(@disabled)]';
-      return browser.waitForVisible(xpath, 2000).then(function() {
-        return $(xpath);
-      });
+      return browser.waitForVisible(xpath, 2000).element(xpath);
     }
   },
   deleteApplicationButtons: {
@@ -69,9 +67,7 @@ var ManageApplicationsPage = Object.create(Page, {
   applicationRow: {
     get: function () {
       var xpath = '//table[@class="table cd-grid-table"]//tr';
-      return browser.waitForVisible(xpath, 2000).then(function() {
-        return $(xpath);
-      });
+      return browser.waitForVisible(xpath, 2000).element(xpath);
     }
   },
   applicationRows: {
@@ -83,9 +79,7 @@ var ManageApplicationsPage = Object.create(Page, {
   OKButton: {
     get: function () {
       var xpath = '//button[contains(text(), "OK")]';
-      return browser.waitForVisible(xpath, 2000).then(function() {
-        return $(xpath);
-      });
+      return browser.waitForVisible(xpath, 2000).element(xpath);
     }
   },
   setSearchTicketType: {
@@ -100,7 +94,7 @@ var ManageApplicationsPage = Object.create(Page, {
     }
   },
   getApplicantRowByName: {
-    value: function(name) {
+    value: function (name) {
       var xpath = '//table[@class="table cd-grid-table"]//tr[td[a[contains(text(), "' + name + '")]]]';
       return $(xpath);
     }

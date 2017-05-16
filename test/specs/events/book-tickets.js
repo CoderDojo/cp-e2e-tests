@@ -12,10 +12,10 @@ describe('Book tickets tests', function () {
   afterEach(function () {
     return browser.deleteCookie();
   });
-  var parentOne = _.find(users, function(user) {return user.email === 'parent1@example.com'});
-  var championOne = _.find(users, function(user) {return user.email === 'champion1@example.com'});
+  var parentOne = _.find(users, function (user) { return user.email === 'parent1@example.com'; });
+  var championOne = _.find(users, function (user) { return user.email === 'champion1@example.com'; });
 
-  it('Event should show up', function() {
+  it('Event should show up', function () {
     return promiseSeries([
       () => LoginPage.open(),
       () => LoginPage.login(parentOne.email, parentOne.password),
@@ -25,7 +25,7 @@ describe('Book tickets tests', function () {
     ]);
   });
 
-  it('Family members should show up', function() {
+  it('Family members should show up', function () {
     return promiseSeries([
       () => LoginPage.open(),
       () => LoginPage.login(parentOne.email, parentOne.password),
@@ -39,7 +39,7 @@ describe('Book tickets tests', function () {
     ]);
   });
 
-  it('Applications should show up', function() {
+  it('Applications should show up', function () {
     return promiseSeries([
       () => LoginPage.open(),
       () => LoginPage.login(championOne.email, championOne.password),
@@ -57,7 +57,7 @@ describe('Book tickets tests', function () {
       () => ManageApplicationsPage.deleteApplicationButtons,
       (deleteApplicationButtons) => {
         var promises = [];
-        deleteApplicationButtons.value.forEach(function() {
+        deleteApplicationButtons.value.forEach(function () {
           promises.push(() => browser.waitUntil(function () {
             return ManageApplicationsPage.applicationRows
             .then(function (applicationRows) {
