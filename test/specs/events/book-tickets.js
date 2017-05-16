@@ -58,14 +58,12 @@ describe('Book tickets tests', function () {
       (deleteApplicationButtons) => {
         var promises = [];
         deleteApplicationButtons.value.forEach(function () {
-          promises.push(() => browser.waitUntil(function () {
-            return ManageApplicationsPage.applicationRows
-            .then(function (applicationRows) {
-              return applicationRows.value.length > 0;
-            });
-          }));
           promises.push(() => ManageApplicationsPage.deleteApplicationButton.click());
           promises.push(() => ManageApplicationsPage.OKButton.click());
+          promises.push(() => browser.refresh());
+          promises.push(() => browser.waitUntil(function () {
+            return browser.isExisting('//div[@class="panel-body"]');
+          }));
         });
         return promiseSeries(promises);
       },
