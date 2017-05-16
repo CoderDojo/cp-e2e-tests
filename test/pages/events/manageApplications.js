@@ -52,9 +52,57 @@ var ManageApplicationsPage = Object.create(Page, {
       return $('//button[contains(text(), "Export to CSV")]/following-sibling::ul//a[contains(text(), "Export Full List")]');
     }
   },
+  deleteApplicationButton: {
+    get: function () {
+      var xpath = '//td//button[not(@disabled)]';
+      return browser.waitForVisible(xpath, 2000).then(function() {
+        return $(xpath);
+      });
+    }
+  },
+  deleteApplicationButtons: {
+    get: function () {
+      var xpath = '//td//button[not(@disabled)]';
+      return browser.waitForVisible(xpath, 2000).elements(xpath);
+    }
+  },
+  applicationRow: {
+    get: function () {
+      var xpath = '//table[@class="table cd-grid-table"]//tr';
+      return browser.waitForVisible(xpath, 2000).then(function() {
+        return $(xpath);
+      });
+    }
+  },
+  applicationRows: {
+    get: function () {
+      var xpath = '//table[@class="table cd-grid-table"]//tr';
+      return browser.waitForVisible(xpath, 2000).elements(xpath);
+    }
+  },
+  OKButton: {
+    get: function () {
+      var xpath = '//button[contains(text(), "OK")]';
+      return browser.waitForVisible(xpath, 2000).then(function() {
+        return $(xpath);
+      });
+    }
+  },
   setSearchTicketType: {
     value: function (ticketType) {
       return browser.uiSelectFilterAndSelect('ticketTypeFilter', ticketType, ticketType);
+    }
+  },
+  getApprovedStatusByName: {
+    value: function (name) {
+      var xpath = '//table[@class="table cd-grid-table"]//tr[td[a[contains(text(), "' + name + '")]]]/td/div/input[@name="applicationApproved"]';
+      return browser.getAttribute(xpath, 'checked');
+    }
+  },
+  getApplicantRowByName: {
+    value: function(name) {
+      var xpath = '//table[@class="table cd-grid-table"]//tr[td[a[contains(text(), "' + name + '")]]]';
+      return $(xpath);
     }
   },
   getSessionCapacity: {
