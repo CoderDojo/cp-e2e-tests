@@ -17,6 +17,12 @@ var ViewDojoPage = Object.create(Page, {
         .element(selector);
     }
   },
+  getJoinButton: {
+    get: function () {
+      var selector = '.cd-join-dojo button'; // It's actually inexact as it could be join or leave
+      return browser.element(selector);
+    }
+  },
   getEventCard: {
     value: function (eventName) {
       return getEventCard(eventName);
