@@ -63,6 +63,18 @@ var ViewDojoPage = Object.create(Page, {
       return getEventCard(eventName).$('div[class="cd-event-list-item__link"] > a');
     }
   },
+  isCardExisting: {
+    value: function (eventName) {
+      var xpath = '//cd-event-list-item[.//h5[text()="' + eventName + '"]]';
+      return browser.isVisible(xpath);
+    }
+  },
+  isBookingButtonVisible: {
+    value: function (eventName) {
+      var path = '.cd-event-list-item__link > a';
+      return getEventCard(eventName).isVisible(path);
+    }
+  },
   open: {
     value: function (slug) {
       return Page.open.call(this, 'dojo/' + slug);

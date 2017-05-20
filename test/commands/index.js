@@ -3,6 +3,7 @@ var commands = [
   'getLoggedInUserInstance',
   'insertIntoCkEditor',
   'login',
+  'logout',
   'register',
   'selectDate',
   'selectTime',
