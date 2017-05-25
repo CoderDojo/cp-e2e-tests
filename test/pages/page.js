@@ -42,6 +42,13 @@ module.exports = Object.create(new Page(), {
       return $('//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "My Profile")]');
     }
   },
+  userMenu_viewProfileLink: {
+    get: function () {
+      return browser.getAttribute('//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "My Profile")]', 'href').then(function(href) {
+        return href[0].replace('/dashboard', '').replace('/edit', '');
+      });
+    }
+  },
   userMenu_myDojos: {
     get: function () {
       return $('//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "My Dojos")]');

@@ -77,7 +77,8 @@ describe('Test profile visibility', function () {
         console.log('user', user);
         promises.push(() => login(user));
         promises.push(() => MainPage.userMenu.click());
-        promises.push(() => MainPage.userMenu_myProfile.click());
+        promises.push(() => MainPage.userMenu_viewProfileLink);
+        promises.push((url) => browser.url(url));
         promises.push(() => browser.getUrl());
         promises.push((url) => { urls[user] = url; });
         promises.push(() => logout());
