@@ -44,7 +44,7 @@ module.exports = Object.create(new Page(), {
   },
   userMenu_viewProfileLink: {
     get: function () {
-      return browser.getAttribute('//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "My Profile")]', 'href').then(function(href) {
+      return browser.getAttribute('//*[contains(@class, "cd-menu__profile-menu")]//a[contains(text(), "My Profile")]', 'href').then(function (href) {
         return href[0].replace('/dashboard', '').replace('/edit', '');
       });
     }

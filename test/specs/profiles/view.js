@@ -19,7 +19,7 @@ describe('Test profile visibility', function () {
         it('should be able to see the actions wheel', () => {
           return promiseSeries([
             () => browser.toggleProfileMenu(),
-            () => MainPage.MainPage.userMenu_viewProfileLink,
+            () => MainPage.userMenu_viewProfileLink,
             (url) => browser.url(url),
             () => isWheelVisible()
           ]);
