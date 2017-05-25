@@ -78,8 +78,10 @@ describe('Test profile visibility', function () {
         promises.push(() => login(user));
         promises.push(() => MainPage.userMenu.click());
         promises.push(() => MainPage.userMenu_viewProfileLink);
-        promises.push((url) => browser.url(url));
-        promises.push(() => browser.getUrl());
+        promises.push((url) => {
+          browser.url(url);
+          return Promise.resolve(url);
+        });
         promises.push((url) => { urls[user] = url; });
         promises.push(() => logout());
       });
