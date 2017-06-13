@@ -17,6 +17,12 @@ var ViewDojoPage = Object.create(Page, {
         .element(selector);
     }
   },
+  getJoinButton: {
+    get: function () {
+      var selector = '.cd-join-dojo button'; // It's actually inexact as it could be join or leave
+      return browser.element(selector);
+    }
+  },
   getEventCard: {
     value: function (eventName) {
       return getEventCard(eventName);
@@ -55,6 +61,18 @@ var ViewDojoPage = Object.create(Page, {
   getEventBookButton: {
     value: function (eventName) {
       return getEventCard(eventName).$('div[class="cd-event-list-item__link"] > a');
+    }
+  },
+  isCardExisting: {
+    value: function (eventName) {
+      var xpath = '//cd-event-list-item[.//h5[text()="' + eventName + '"]]';
+      return browser.isVisible(xpath);
+    }
+  },
+  isBookingButtonVisible: {
+    value: function (eventName) {
+      var path = '.cd-event-list-item__link > a';
+      return getEventCard(eventName).isVisible(path);
     }
   },
   open: {
