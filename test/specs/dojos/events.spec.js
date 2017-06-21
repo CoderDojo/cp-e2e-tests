@@ -4,7 +4,6 @@ module.exports = {
     return function () {
       return promiseSeries([
         () => ViewDojoPage.isCardExisting(eventName),
-        (visible) => {console.log('seeEvent', visible, expected); return Promise.resolve(visible)},
         (visible) => expect(visible).to.be.equal(expected)
       ]);
     };
@@ -13,7 +12,6 @@ module.exports = {
     return function () {
       return promiseSeries([
         () => ViewDojoPage.isBookingButtonVisible(eventName),
-        (visible) => {console.log('bookEvent', visible, expected); return Promise.resolve(visible)},
         (visible) => expect(visible).to.be.equal(expected)
       ]);
     };
