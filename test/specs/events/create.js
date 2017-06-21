@@ -129,7 +129,7 @@ describe('Creating a Future One-off Event', function () {
   });
 
   it('should appear correctly on the "My Events" page', function () {
-    var expectedDate = moment(eventDetails.date).format('Do MMMM YY') + ', ' +
+    var expectedDate = moment(eventDetails.date).format('Do MMMM Y') + ', ' +
                         moment(eventDetails.startTime).format('HH:mm') + ' - ' +
                         moment(eventDetails.endTime).format('HH:mm');
 
@@ -175,6 +175,7 @@ describe('Creating a Future One-off Event', function () {
     var expectedEndTime = moment(eventDetails.endTime).format('HH:mm');
     return promiseSeries([
       () => MyDojosPage.userMenu.click(),
+      () => MyDojosPage.userMenu_myDojos.waitForVisible(),
       () => MyDojosPage.userMenu_myDojos.click(),
       () => MyDojosPage.getListingLink(dojos.dojo1.name).click(),
       () => ViewDojoPage.firstEventCard,
