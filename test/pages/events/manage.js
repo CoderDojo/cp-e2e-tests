@@ -55,7 +55,7 @@ var ManageEventsPage = Object.create(Page, {
   },
   getManageApplicationsLink: {
     value: function (name) {
-      var xpath = '//tbody/tr[td/a[contains(text(), "' + name + '")]]/td/a[contains(@ui-sref, "manage-applications" and not(contains(text(), "' + name + '")))]';
+      var xpath = '//a[contains(text(), "' + name + '")]';
       return browser.waitForVisible(xpath)
         .element(xpath);
     }
