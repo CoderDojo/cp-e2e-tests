@@ -1,4 +1,5 @@
 # cp-e2e-tests
+# DEPRECATED in favor for integration tests in cp-zen-frontend
 
 ## About
 
